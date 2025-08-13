@@ -1,4 +1,6 @@
 # CI/CD pro OT/IT Docs (MkDocs → GitHub Pages)
+--8<-- "includes/abbr.md"
+
 
 *Proč jednou větou:* Každý push do `main` automaticky přebuildí web a nasadí ho na GitHub Pages. Bez ručního nahrávání.
 
