@@ -1,0 +1,64 @@
+
+site_name: OT/IT Docs
+site_description: Praktické how-to návody pro OT/IT integraci, bezpečnost a data
+site_url: https://<user>.github.io/ot-it-docs/
+repo_url: https://github.com/<user>/ot-it-docs
+repo_name: <user>/ot-it-docs
+
+theme:
+  name: material
+  language: cs
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.tabs
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/<user>
+  version:
+    provider: mike
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Úvod: index.md
+  - Projekty:
+      - Šablony:
+          - Šablona projektu: projects/templates/project-template.md
+  - How-to:
+      - Šablony:
+          - Šablona how-to: how-to/templates/how-to-template.md
+      - Edge gateway: OPC UA → MQTT v Node-RED: how-to/edge-gateway-opcua-mqtt.md
+      - Mosquitto: TLS, auth, ACL, QoS: how-to/mosquitto-security.md
+      - MQTT topic naming pro CNC: how-to/mqtt-topic-naming.md
+  - Playbooks: 
+      - README: playbooks/README.md
+  - Reference:
+      - README: reference/README.md
+  - ADR:
+      - Šablona ADR: adr/adr-template.md
