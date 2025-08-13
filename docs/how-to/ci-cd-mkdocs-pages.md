@@ -8,13 +8,13 @@
 - Udržet repo jako jediný zdroj pravdy.
 
 ## Předpoklady
-- Repo `ot-it-docs` (public), zapnuté GitHub Pages (Source: GitHub Actions).
+- Repo `ot-it-docs` (public), zapnuté GitHub Pages (Source: Deploy from a branch → gh-pages → /).
 - Složka `docs/` a soubor `mkdocs.yml`.
 - Workflow `.github/workflows/deploy.yml` (viz níže).
 
 ## Kroky
 
-### 1) Workflow pro deploy
+### 1. Workflow pro deploy
 Soubor: `.github/workflows/deploy.yml`
 ```yaml
 name: Deploy MkDocs to GitHub Pages
@@ -58,3 +58,42 @@ jobs:
         run: |
           mkdocs build --strict
           mkdocs gh-deploy --force --clean --remote-branch gh-pages
+
+## Troubleshooting
+## Problém: Actions zelené, ale web je starý
+
+### Jak to vypadá
+- Větve `gh-pages` přibyl nový commit, ale na URL vidím starý obsah.
+
+### Nejčastější příčiny + rychlý fix
+1) **Zdroj Pages neodpovídá způsobu deploye**
+   - Deploy: `mkdocs gh-deploy` posílá do větve **`gh-pages`**.
+   - Pages musí číst: **Deploy from a branch → gh-pages → /**.
+   - **Fix:** Settings → Pages → Source přepnout na `gh-pages` a uložit.
+
+2) **Cache prohlížeče / CDN**
+   - **Fix:** tvrdý refresh (Ctrl/Cmd+F5) nebo přidej `?_cb=YYYYMMDDHHMM` za URL, např. `…/ot-it-docs/?_cb=20250813`.
+   - Případně vyčisti uložená data pro daný web.
+
+3) **Chybí `.nojekyll`**
+   - MkDocs ho přidává automaticky. **Fix:** zkontroluj v rootu větve `gh-pages`, případně nasadit znovu.
+
+4) **Míšmaš dvou strategií**
+   - Buď nasazuj do **branch `gh-pages`**, nebo používej **Pages artifact**. Nemíchat.
+   - Pro verzování s `mike` je lepší **`gh-pages`** (branch).
+
+### Kontrolní checklist
+- [ ] Settings → Pages: Source = Deploy from a branch, Branch = `gh-pages`, Folder = `/`.
+- [ ] Větvi `gh-pages` přibyl čerstvý commit.
+- [ ] Po přidání `?_cb=<něco>` na URL je vidět nová změna.
+
+## Ověření
+- **Actions**: poslední běh „Deploy MkDocs to GitHub Pages“ je zelený.
+- **Větev `gh-pages`**: přibyl nový commit (čas teď).
+- **Pages → Source**: `Deploy from a branch → gh-pages → /`.
+- **Web**: `https://<user>.github.io/ot-it-docs/` se načte; lupa vyhledává; nová změna je vidět i s `?_cb=<timestamp>`.
+
+## Rollback
+- **Vrácení obsahu**: v GitHubu na posledním commitu klikni **Revert** → push do `main` (Actions nasadí zpět).
+- **Dočasné zastavení deploye**: Actions → otevři workflow → **… → Disable workflow** (zapni po opravě).
+- **Obnova posledního OK buildu**: Actions → najdi poslední zelený běh → **Re-run jobs** (přegeneruje web z tehdejšího stavu).
