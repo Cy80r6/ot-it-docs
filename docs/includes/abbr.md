@@ -7,3 +7,4 @@
 *[QoS]: Quality of Service — úroveň doručení zpráv v MQTT.
 *[OPC UA]: Otevřený standard pro průmyslovou komunikaci.
 *[MQTT]: Lehký pub/sub protokol pro IoT.
+ž
