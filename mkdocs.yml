@@ -1,9 +1,9 @@
 
 site_name: OT/IT Docs
 site_description: Praktické how-to návody pro OT/IT integraci, bezpečnost a data
-site_url: https://<user>.github.io/ot-it-docs/
-repo_url: https://github.com/<user>/ot-it-docs
-repo_name: <user>/ot-it-docs
+site_url: https://cy80r6.github.io/ot-it-docs/
+repo_url: https://github.com/cy80r6/ot-it-docs
+repo_name: cy80r6/ot-it-docs
 
 theme:
   name: material
@@ -22,7 +22,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/<user>
+      link: https://github.com/cy80r6
   version:
     provider: mike
 
