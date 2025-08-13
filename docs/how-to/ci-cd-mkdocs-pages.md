@@ -1,6 +1,12 @@
 # CI/CD pro OT/IT Docs (MkDocs → GitHub Pages)
 --8<-- "includes/abbr.md"
 
+!!! note "Co je CI/CD (stručně)"
+    **CI** — často (každým pushem) integruju změny a ověřuju je buildem/testy, aby se chyby chytaly brzy.  
+    **CD** — automaticky připravuju artefakt k nasazení (Delivery) nebo rovnou nasazuju do produkce (Deployment).  
+
+    U tebe teď probíhá **CI** (MkDocs build na každý push) a **Continuous Deployment** (auto-nasazení na `gh-pages` → web se hned aktualizuje).
+
 
 *Proč jednou větou:* Každý push do `main` automaticky přebuildí web a nasadí ho na GitHub Pages. Bez ručního nahrávání.
 
@@ -28,7 +34,7 @@ on:
 
 permissions:
   contents: write
-
+ž
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
