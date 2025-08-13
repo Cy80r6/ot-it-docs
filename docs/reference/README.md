@@ -1,3 +1,0 @@
-# Reference
-
-Standardy, slovník, konvence.
