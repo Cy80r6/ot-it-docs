@@ -53,9 +53,10 @@ nav:
   - How-to:
       - Šablony:
           - Šablona how-to: how-to/templates/how-to-template.md
-  - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
-  - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
-  - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+      - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
+      - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
+      - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+      - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
   - Playbooks: 
       - README: playbooks/README.md
   - Reference:
