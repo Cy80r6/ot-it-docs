@@ -1,5 +1,6 @@
 
 # Mosquitto: TLS, auth, ACL, QoS
+--8<-- "includes/abbr.md"
 
 **Účel:** Zabezpečit MQTT broker pro provozní data.  
 **Předpoklady:** Mosquitto, základní znalost TLS certifikátů.  

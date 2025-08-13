@@ -1,5 +1,6 @@
 
 # ADR: {Krátký název rozhodnutí}
+--8<-- "includes/abbr.md"
 
 **Datum:** YYYY-MM-DD  
 **Status:** navrženo / schváleno / zamítnuto

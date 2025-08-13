@@ -1,5 +1,6 @@
 
 # MQTT topic naming pro CNC
+--8<-- "includes/abbr.md"
 
 **Účel:** Zajistit konzistentní názvy témat pro škálování a řízení přístupů.  
 **Předpoklady:** Znalost zařízení a výrobní topologie.  

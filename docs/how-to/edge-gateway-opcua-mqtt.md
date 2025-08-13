@@ -1,5 +1,6 @@
 
 # Edge gateway: OPC UA → MQTT v Node‑RED
+--8<-- "includes/abbr.md"
 
 **Účel:** Přenést data ze simulovaného OPC UA serveru do MQTT jako základ OT→IT integrace.  
 **Předpoklady:** Nainstalovaný Node‑RED, přístup k OPC UA serveru (Prosys), MQTT broker (Mosquitto).  
