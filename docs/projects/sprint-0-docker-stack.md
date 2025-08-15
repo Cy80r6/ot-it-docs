@@ -62,6 +62,30 @@ Očekávej výpis „Hello from Docker!“.
    dism.exe /online /disable-feature /featurename:VirtualMachinePlatform
    ```
 
+
+### GPU podpora v Dockeru (volitelné)
+
+Pokud máš v PC NVIDIA GPU a chceš ji využít v kontejnerech (např. pro AI nebo video processing), je potřeba:
+
+1. Mít nainstalované aktuální NVIDIA ovladače (pro Windows 11).
+2. Používat Docker Desktop s WSL2 backendem.
+3. Ve WSL distribuci (např. Ubuntu) nainstalovat **NVIDIA Container Toolkit**:
+  ```powershell
+  wsl
+  ```
+  ```bash
+  sudo apt update
+  sudo apt install -y nvidia-container-toolkit
+  sudo systemctl restart docker
+  ```
+4. V Docker Desktop v Settings → Resources → GPU povolit použití karty.
+5. Otestovat pomocí:
+  ```bash
+  docker run --rm --gpus all nvidia/cuda:12.6.2-base-ubuntu22.04 nvidia-smi
+  ```
+
+> **Poznámka:** Pro detailní návod viz oficiální dokumentaci Dockeru a NVIDIA (https://docs.nvidia.com/cuda/wsl-user-guide/index.html).
+
 ### Lessons learned
 - WSL2 je rychlejší než starší Hyper-V backend a má nižší nároky na RAM.
 - Pokud máš více Linux distribucí, v Docker Desktop nastav, která má běžet s Dockerem.
