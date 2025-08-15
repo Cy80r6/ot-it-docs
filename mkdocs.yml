@@ -71,8 +71,8 @@ nav:
     - Šablona how-to: how-to/templates/how-to-template.md
   - Projekty:
     - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
-    - "Projekt 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-simulace.md
-    - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud.md
+    - "Sprint 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-mqtt-bridge.md
+    - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud-influxdb.md
     - Šablona projektu: projects/templates/project-template.md  
   - Playbooks:
       - README: playbooks/README.md
