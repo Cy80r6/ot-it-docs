@@ -211,7 +211,13 @@ services:
      docker compose logs mosquitto
      ```
 
-     Nejčastější problém: chybějící config soubor v `./mosquitto/config`. Máš dvě možnosti:
+
+     Nejčastější problém: chybějící nebo nefunkční config soubor v `./mosquitto/config`. Co se děje:
+
+     - Pokud máš volume `./mosquitto/config:/mosquitto/config` a adresář je prázdný, Mosquitto image nenajde žádný config a broker se nespustí (i když kontejner v `docker ps` vypadá jako "Up").
+     - V logu pak uvidíš chybu `Error: Unable to open config file` nebo "Starting in local only mode..." (povoleno jen pro localhost).
+
+     **Možnosti řešení:**
 
      **a) Rychlý start bez vlastního configu:**
      - Dočasně zakomentuj nebo odstraň řádek s volume pro config v `docker-compose.yml`:
@@ -223,13 +229,23 @@ services:
        docker compose down
        docker compose up -d
        ```
+     - Mosquitto pak použije vestavěný default config (ale povolí jen přístup z localhost uvnitř kontejneru).
 
      **b) Vytvoř si vlastní minimální config:**
      - Vytvoř složku `mosquitto/config` vedle svého `docker-compose.yml`.
      - Do souboru `mosquitto/config/mosquitto.conf` vlož například:
        ```
+       # Poslouchej na všech rozhraních na portu 1883
        listener 1883
+
+       # Povolit připojení bez autentizace (jen na testy!)
        allow_anonymous true
+
+       # Ulož data a logy (adresáře mapuješ v docker-compose.yml)
+       persistence true
+       persistence_location /mosquitto/data/
+
+       log_dest file /mosquitto/log/mosquitto.log
        ```
      - Ujisti se, že v `docker-compose.yml` je volume pro config odkomentovaný:
        ```yaml
@@ -240,6 +256,10 @@ services:
        docker compose down
        docker compose up -d
        ```
+     - V logu už by neměla být hláška "local only mode" a MQTT Explorer se připojí z hosta na `localhost:1883`.
+
+     > **Poznámka:** V základním image Mosquitta není žádné výchozí jméno/heslo. Pokud chceš zabezpečit přístup, musíš si v configu nastavit password_file a další parametry (viz dokumentace Mosquitta).
+
 
 3. **Ověření Node-RED:**
 
@@ -247,13 +267,63 @@ services:
      [http://localhost:1880](http://localhost:1880)
    - Pokud se načte Node-RED UI, vše funguje.
 
-4. **Troubleshooting:**
-   - Pokud něco neběží, použij logy:
-     ```powershell
-     docker compose logs mosquitto
-     docker compose logs nodered
-     ```
-   - Zkontroluj, že všechny potřebné složky pro volumes existují (hlavně ./mosquitto/config s mosquitto.conf, pokud volume používáš).
+---
+
+### Praktický testovací flow: MQTT Explorer, WSL2 a Docker klient
+
+#### Co je co?
+- **Broker (Mosquitto)** běží v Dockeru a poslouchá na localhost:1883 (díky `ports: 1883:1883`).
+- **MQTT Explorer (Windows app)** je klient. Připojuje se na localhost:1883.
+- Publikovat můžeš buď přímo z MQTT Exploreru, nebo z WSL2 (nebo z dalšího kontejneru).
+
+#### Nejkratší funkční testy (vyber si jeden):
+
+**A) Všechno jen v MQTT Exploreru (nejjednodušší):**
+1. V MQTT Exploreru klikni na Subscribe na topic `test/topic`.
+2. Vpravo dole Publish na stejný topic `test/topic`, payload třeba `hello`.
+3. Zpráva se hned objeví vlevo. Hotovo.
+
+**B) Publikace z WSL2 (když chceš mít jistotu „z jiného místa“):**
+1. Ve WSL spusť:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y mosquitto-clients
+   mosquitto_pub -h localhost -t test/topic -m "ahoj z WSL"
+   ```
+2. V MQTT Exploreru (subscribed na `test/topic`) uvidíš zprávu.
+3. (Volitelně) Otevři druhé WSL okno a spusť subscriber:
+   ```bash
+   mosquitto_sub -h localhost -t test/topic
+   ```
+   a v Exploreru klikni Publish → uvidíš to v terminálu.
+
+**C) Publikace z Dockeru (bez instalace klientů do WSL):**
+1. Z adresáře s docker-compose.yml spusť:
+   ```powershell
+   docker run --rm --network mqtt_node-red_default eclipse-mosquitto:2 \
+     mosquitto_pub -h mosquitto -t test/topic -m "ahoj z vedlejšího kontejneru"
+   ```
+   (Síť `mqtt_node-red_default` se jmenuje podle tvé složky; ověř příkazem `docker network ls`.)
+2. V MQTT Exploreru zprávu uvidíš.
+
+#### Když to stále neukáže zprávy:
+- V `mosquitto.conf` musíš mít aspoň:
+  ```
+  listener 1883
+  allow_anonymous true
+  ```
+- Po úpravě configu vždy restartuj stack:
+  ```powershell
+  docker compose down
+  docker compose up -d
+  ```
+- Ověř porty a stav:
+  ```powershell
+  docker ps
+  docker compose logs mosquitto
+  ```
+- V logu nesmí být „local only mode…“.
+- V MQTT Exploreru: Host `localhost`, Port `1883`, TLS/Validate vypnuto, bez user/pass.
 
 ---
 
