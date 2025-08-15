@@ -1,36 +1,36 @@
+
 # Slovníček pojmů
 
+
+
 ## ADR (Architecture Decision Record)
+Stručný zápis, kde si uchováváš důležitá architektonická rozhodnutí v projektu. Pomáhá zpětně dohledat důvody, kontext, alternativy a důsledky rozhodnutí.
 
-**ADR** je zkratka pro *Architecture Decision Record* — stručný zápis, kde si uchováváš důležitá architektonická rozhodnutí v projektu.
+Podrobné vysvětlení, příklad a strukturu najdeš zde: [Co je ADR (Architecture Decision Record)](adr-vysvetleni.md)
 
-### K čemu slouží ADR?
-- Umožňuje zpětně dohledat, proč a jaká rozhodnutí byla v projektu učiněna.
-- Pomáhá týmu i budoucím členům pochopit kontext, důvody a alternativy.
-- Zvyšuje transparentnost a snižuje riziko opakování stejných diskusí.
+## CI (Continuous Integration)
+Průběžná integrace — časté integrační buildy a testy po každé změně v kódu. Cílem je rychle odhalit chyby a zajistit, že projekt zůstává funkční.
 
-### Co by měl ADR obsahovat?
-- **Název rozhodnutí** (stručný, výstižný)
-- **Datum** a případně verzi projektu
-- **Kontext**: co jsme potřebovali řešit, jaké byly okolnosti
-- **Rozhodnutí**: co bylo vybráno a proč
-- **Alternativy**: jaké další možnosti byly zvažovány a proč nebyly vybrány
-- **Důsledky**: pozitiva, negativa, dopady na provoz, údržbu, bezpečnost apod.
+## CD (Continuous Delivery / Deployment)
+Průběžné doručování nebo nasazování — automatická příprava nebo nasazení buildu do produkce či testovacího prostředí. Zajišťuje rychlé a opakovatelné nasazení změn.
 
-### Příklad (Sprint 1 – „ADR: Volba stacku“)
-- Vybral jsem stack: MkDocs Material + GitHub Pages + mike
-- Kontext: Potřeba rychlé tvorby dokumentace, auto-deploy, verzování
-- Rozhodnutí: Použít MkDocs Material, hostovat na GitHub Pages, verzovat s mike
-- Alternativy: Docusaurus, Hugo, Cloudflare Pages
-- Důsledky: Rychlé nasazení, nízká režie, omezené UI možnosti
-- Datum: [datum rozhodnutí]
+## SSO (Single Sign-On)
+Jednotné přihlášení — uživatel se přihlásí jedním účtem a získá přístup ke všem službám, které SSO podporují.
 
-### Proč je ADR důležitý?
-- Umožní ti i po roce pochopit, proč jsi něco udělal právě takto.
-- Usnadňuje onboarding nových členů týmu.
-- Pomáhá při změnách architektury — víš, na co si dát pozor.
+## TLS (Transport Layer Security)
+Protokol pro šifrování spojení (např. HTTPS, MQTT over TLS). Zajišťuje bezpečný přenos dat mezi klientem a serverem.
 
-> **Tip:** Piš ADR stručně, ale jasně. Každé větší rozhodnutí si zaslouží vlastní zápis.
+## ACL (Access Control List)
+Seznam pravidel přístupu — určuje, kdo má jaká oprávnění k jednotlivým zdrojům nebo operacím (např. v MQTT brokeru).
+
+## QoS (Quality of Service)
+Úroveň doručení zpráv v MQTT. Definuje, jak spolehlivě bude zpráva doručena (např. QoS 0 = „nejlepší snaha“, QoS 1 = doručeno alespoň jednou, QoS 2 = doručeno právě jednou).
+
+## OPC UA (Open Platform Communications Unified Architecture)
+Otevřený standard pro průmyslovou komunikaci. Umožňuje bezpečnou a škálovatelnou výměnu dat mezi zařízeními a systémy v průmyslu.
+
+## MQTT (Message Queuing Telemetry Transport)
+Lehký pub/sub protokol pro IoT — umožňuje efektivní výměnu zpráv mezi zařízeními, typicky v prostředí s omezenými zdroji.
 
 ---
 
