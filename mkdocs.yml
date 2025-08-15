@@ -57,7 +57,7 @@ nav:
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
-    - "Node-RED: základní flow": how-to/node-red-zakladni-flow
+    - "Node-RED: základní flow": how-to/node-red-zakladni-flow.md
     - "ESP32 → MQTT": how-to/esp32-mqtt.md
     - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
     - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
