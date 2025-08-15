@@ -54,7 +54,7 @@ nav:
   - How-to:
     - Šablony:
       - Šablona how-to: how-to/templates/how-to-template.md
-    - "Instalace Mosquitto": how-to/instalace- mosquitto.md
+    - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
     - "Node-RED: základní flow": how-to/node-red-zakladni-flow
     - "ESP32 → MQTT": how-to/esp32-mqtt.md
