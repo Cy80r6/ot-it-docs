@@ -174,9 +174,88 @@ services:
       - ./nodered/data:/data
 ```
 
-### Ověření
-- Mosquitto běží na portu 1883
-- Node-RED UI je na http://localhost:1880
+
+### Ověření běhu Mosquitto a Node-RED
+
+1. **Zkontroluj běžící kontejnery:**
+
+   ```powershell
+   docker ps
+   ```
+   Měl bys vidět oba kontejnery, např.:
+   
+   | CONTAINER ID | IMAGE                  | STATUS | PORTS                       | NAMES                       |
+   |--------------|------------------------|--------|-----------------------------|-----------------------------|
+   | ...          | eclipse-mosquitto:2    | Up ... | 0.0.0.0:1883->1883/tcp      | ...mosquitto...             |
+   | ...          | nodered/node-red:latest| Up ... | 0.0.0.0:1880->1880/tcp      | ...nodered...                |
+
+2. **Ověření Mosquitta (MQTT broker):**
+
+   - Nainstaluj si MQTT klient (např. mosquitto-clients ve WSL nebo MQTT Explorer ve Windows).
+   - Otevři dvě terminálová okna:
+
+     V prvním spusť subscriber:
+     ```bash
+     mosquitto_sub -h localhost -t test
+     ```
+     (čeká na zprávy na topicu "test")
+
+     Ve druhém okně publikuj zprávu:
+     ```bash
+     mosquitto_pub -h localhost -t test -m "ahoj"
+     ```
+     Pokud se zpráva objeví v prvním okně, Mosquitto běží správně.
+
+   - Pokud Mosquitto neběží, zkontroluj logy:
+     ```powershell
+     docker compose logs mosquitto
+     ```
+
+     Nejčastější problém: chybějící config soubor v `./mosquitto/config`. Máš dvě možnosti:
+
+     **a) Rychlý start bez vlastního configu:**
+     - Dočasně zakomentuj nebo odstraň řádek s volume pro config v `docker-compose.yml`:
+       ```yaml
+       # - ./mosquitto/config:/mosquitto/config
+       ```
+     - Spusť stack znovu:
+       ```powershell
+       docker compose down
+       docker compose up -d
+       ```
+
+     **b) Vytvoř si vlastní minimální config:**
+     - Vytvoř složku `mosquitto/config` vedle svého `docker-compose.yml`.
+     - Do souboru `mosquitto/config/mosquitto.conf` vlož například:
+       ```
+       listener 1883
+       allow_anonymous true
+       ```
+     - Ujisti se, že v `docker-compose.yml` je volume pro config odkomentovaný:
+       ```yaml
+       - ./mosquitto/config:/mosquitto/config
+       ```
+     - Spusť stack znovu:
+       ```powershell
+       docker compose down
+       docker compose up -d
+       ```
+
+3. **Ověření Node-RED:**
+
+   - Otevři prohlížeč a přejdi na:
+     [http://localhost:1880](http://localhost:1880)
+   - Pokud se načte Node-RED UI, vše funguje.
+
+4. **Troubleshooting:**
+   - Pokud něco neběží, použij logy:
+     ```powershell
+     docker compose logs mosquitto
+     docker compose logs nodered
+     ```
+   - Zkontroluj, že všechny potřebné složky pro volumes existují (hlavně ./mosquitto/config s mosquitto.conf, pokud volume používáš).
+
+---
 
 ### Správa kontejnerů
 - `docker ps` — seznam běžících kontejnerů
