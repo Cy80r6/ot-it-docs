@@ -48,24 +48,31 @@ markdown_extensions:
 nav:
   - Úvod: index.md
   - Projekty:
-      - Šablony:
-          - Šablona projektu: projects/templates/project-template.md
+    - Šablony:
+      - Šablona projektu: projects/templates/project-template.md
+    - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
   - How-to:
-      - Šablony:
-          - Šablona how-to: how-to/templates/how-to-template.md
-      - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
-      - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
-      - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
-      - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
+    - Šablony:
+      - Šablona how-to: how-to/templates/how-to-template.md
+    - "Instalace Mosquitto": how-to/instalace- mosquitto.md
+    - "Instalace Node-RED": how-to/instalace-node-red.md
+    - "Node-RED: základní flow": how-to/node-red-zakladni-flow
+    - "ESP32 → MQTT": how-to/esp32-mqtt.md
+    - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
+    - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
+    - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+    - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
   - Playbooks: 
       - README: playbooks/README.md
   - Reference:
-      - README: reference/README.md
-      - Sprinty:
-          - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
-          - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
-          - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
-          - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
+    - README: reference/README.md
+    - Slovníček pojmů: reference/slovnicek.md
+    - Sprinty:
+      - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
+      - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
+      - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
+      - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
+    - Šablona sprintu: reference/sprint_template.md
   - ADR:
       - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
       - Šablona ADR: adr/adr-template.md
