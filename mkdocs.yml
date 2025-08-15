@@ -52,8 +52,6 @@ nav:
       - Šablona projektu: projects/templates/project-template.md
     - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
   - How-to:
-    - Šablony:
-      - Šablona how-to: how-to/templates/how-to-template.md
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
@@ -63,6 +61,13 @@ nav:
     - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
     - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
     - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
+    - "CI/CD: GitHub Actions pro MkDocs": how-to/ci-cd-github-actions.md
+    - "CI/CD: Mike pro verze dokumentace": how-to/ci-cd-mike.md
+    - Šablona how-to: how-to/templates/how-to-template.md
+  - Projekty:
+    - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
+    - "Projekt 2: OPC UA simulace + bridge do MQTT": projects/project-2-opcua-simulace.md
+    - "Projekt 3: MQTT do cloudu + historická data": projects/project-3-mqtt-cloud.md  
   - Playbooks:
       - README: playbooks/README.md
       - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
