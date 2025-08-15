@@ -54,6 +54,7 @@ nav:
   - How-to:
     - Šablony:
       - Šablona how-to: how-to/templates/how-to-template.md
+    - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
     - "Node-RED: základní flow": how-to/node-red-zakladni-flow
@@ -62,8 +63,9 @@ nav:
     - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
     - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
     - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
-  - Playbooks: 
+  - Playbooks:
       - README: playbooks/README.md
+      - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
   - Reference:
     - README: reference/README.md
     - Slovníček pojmů: reference/slovnicek.md
