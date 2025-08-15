@@ -70,9 +70,11 @@ Pokud máš v PC NVIDIA GPU a chceš ji využít v kontejnerech (např. pro AI n
 1. Mít nainstalované aktuální NVIDIA ovladače (pro Windows 11).
 2. Používat Docker Desktop s WSL2 backendem.
 3. Ve WSL distribuci (např. Ubuntu) nainstalovat **NVIDIA Container Toolkit**:
+  ve windows v powershellu:
   ```powershell
   wsl
   ```
+  v ubuntu v bash:
   ```bash
   sudo apt update
   sudo apt install -y nvidia-container-toolkit
