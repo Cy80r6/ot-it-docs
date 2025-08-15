@@ -30,20 +30,26 @@ plugins:
   - search
 
 markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - attr_list
   - admonition
   - abbr
-  - attr_list
   - def_list
   - footnotes
   - md_in_html
   - toc:
       permalink: true
-  - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.highlight
   - pymdownx.snippets
-  - pymdownx.tabbed:
-      alternate_style: true
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
 
 nav:
   - Úvod: index.md
