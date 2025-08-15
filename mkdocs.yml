@@ -61,11 +61,11 @@ nav:
       - README: playbooks/README.md
   - Reference:
       - README: reference/README.md
-    - Sprinty:
-      - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
-      - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
-      - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
-      - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
+      - Sprinty:
+          - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
+          - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
+          - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
+          - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
   - ADR:
       - Šablona ADR: adr/adr-template.md
   - Vysvětlivky:
