@@ -11,36 +11,31 @@
 - Administrátorský přístup
 - Stabilní internetové připojení
 
-### Kroky
-1. Aktivace WSL2 a Virtual Machine Platform
+
+### Kroky (rychlá varianta)
+1. Pro většinu uživatelů stačí spustit v PowerShellu jediný příkaz, který provede kroky 1–8 najednou:
    ```powershell
-   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+   wsl --install
    ```
-2. Restart počítače
-   ```powershell
-   Restart-Computer -Force
-   ``` 
-3. Stažení a instalace jádra WSL2
-   - Stáhni z oficiální stránky Microsoftu: WSL2 Linux kernel update package
-   - Nainstaluj .msi soubor.
-4. Nastavení WSL2 jako výchozí verze
-   ```powershell
-   wsl --set-default-version 2
-   ```
-5. Instalace distribuce Linuxu
-   - Z Microsoft Store stáhni například Ubuntu 22.04 LTS.
-   - Po prvním spuštění nastav uživatelské jméno a heslo.
-6. Instalace Docker Desktop
-   - Stáhni z https://www.docker.com/products/docker-desktop/
-   - Během instalace zaškrtni Use the WSL 2 based engine
+   Tento příkaz automaticky aktivuje potřebné Windows komponenty, stáhne a nastaví WSL2, nainstaluje výchozí Linux distribuci (např. Ubuntu) a provede restart počítače.
+
+2. Po restartu spusť nově nainstalovanou Linux distribuci (např. Ubuntu) a nastav uživatelské jméno a heslo.
+
+3. Stáhni a nainstaluj Docker Desktop:
+   - https://www.docker.com/products/docker-desktop/
+   - Během instalace zaškrtni "Use the WSL 2 based engine".
    - Po instalaci spusť Docker Desktop a v Settings → Resources → WSL Integration povol svou Linux distribuci.
-7. Ověření instalace
+
+4. Ověření instalace:
    ```powershell
    docker version
    docker compose version
    ```
    - Příkaz `docker run hello-world` by měl zobrazit uvítací zprávu z Dockeru.
+
+---
+
+> **Poznámka:** Pokud potřebujete detailní ruční postup (například pro firemní prostředí nebo při chybě automatické instalace), použijte rozšířený návod v předchozích verzích dokumentace nebo na webu Microsoftu.
 
 ### Ověření funkčnosti docker-compose
 Vytvoř soubor docker-compose.yml:
