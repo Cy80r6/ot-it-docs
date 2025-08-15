@@ -51,9 +51,6 @@ nav:
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
-    - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
-    - "Instalace Mosquitto": how-to/instalace-mosquitto.md
-    - "Instalace Node-RED": how-to/instalace-node-red.md
     - "Node-RED: základní flow": how-to/node-red-zakladni-flow.md
     - "ESP32 → MQTT": how-to/esp32-mqtt.md
     - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
