@@ -37,8 +37,19 @@
 
 > **Poznámka:** Pokud potřebujete detailní ruční postup (například pro firemní prostředí nebo při chybě automatické instalace), použijte rozšířený návod v předchozích verzích dokumentace nebo na webu Microsoftu.
 
-### Ověření funkčnosti docker-compose
-Vytvoř soubor docker-compose.yml:
+
+### Ověření funkčnosti docker-compose a GPU
+
+#### 1. Ověření orchestrátoru (Hello world)
+
+Nejprve si vytvoř složku pro testování Docker Compose, například:
+
+```powershell
+mkdir ~/docker-tests
+cd ~/docker-tests
+```
+
+V této složce vytvoř soubor `docker-compose.yml` s tímto obsahem:
 
 ```yaml
 version: "3.9"
@@ -51,7 +62,26 @@ Spusť:
 ```powershell
 docker compose up
 ```
-Očekávej výpis „Hello from Docker!“.
+
+Pokud se zobrazí zpráva z hello-world kontejneru, Docker Compose funguje správně.
+
+> **Poznámka:** docker compose hledá soubor `docker-compose.yml` v aktuálním adresáři, odkud příkaz spouštíš. Pro každý projekt je vhodné mít vlastní složku.
+
+#### 2. Ověření GPU podpory (volitelné)
+
+Pokud máš v PC NVIDIA GPU a chceš ji využívat v kontejnerech:
+
+- Nainstaluj NVIDIA Container Toolkit (viz sekce výše ve WSL distribuci).
+- Restartuj Docker Desktop.
+- Spusť testovací kontejner:
+
+```powershell
+docker run --rm --gpus all nvidia/cuda:12.6.2-base-ubuntu22.04 nvidia-smi
+```
+
+Pokud se ve výstupu objeví tvoje karta (např. GeForce RTX 4070 Ti), Docker správně používá lokální GPU.
+
+---
 
 ### Rollback / Odinstalace
 - Odinstaluj Docker Desktop z Nastavení → Aplikace
@@ -76,6 +106,13 @@ Pokud máš v PC NVIDIA GPU a chceš ji využít v kontejnerech (např. pro AI n
   ```
   v ubuntu v bash:
   ```bash
+  curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
+   | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit.gpg
+
+  curl -fsSL https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list \
+   | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit.gpg] https://#' \
+   | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list >/dev/null
+
   sudo apt update
   sudo apt install -y nvidia-container-toolkit
   sudo systemctl restart docker
