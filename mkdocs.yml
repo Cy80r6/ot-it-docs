@@ -73,10 +73,11 @@ nav:
     - "CI/CD: Mike pro verze dokumentace": how-to/ci-cd-mike.md
     - Šablona how-to: how-to/templates/how-to-template.md
   - Projekty:
+    - "Sprint 0: Docker stack (Mosquitto + Node-RED)": projects/sprint-0-docker-stack.md
     - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
     - "Sprint 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-mqtt-bridge.md
     - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud-influxdb.md
-    - Šablona projektu: projects/templates/project-template.md  
+    - Šablona projektu: projects/templates/project-template.md
   - Playbooks:
       - README: playbooks/README.md
       - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
@@ -88,9 +89,10 @@ nav:
       - Slovníček pojmů: reference/slovnicek.md
       - Co je ADR (Architecture Decision Record): reference/adr-vysvetleni.md
       - Sprinty:
-          - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
-          - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
-          - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
-          - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
-          - Šablona sprintu: reference/sprint_template.md
+        - "Sprint 0: Docker stack (Mosquitto + Node-RED)": ../projects/sprint-0-docker-stack.md
+        - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
+        - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
+        - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
+        - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
+        - Šablona sprintu: reference/sprint_template.md
   
