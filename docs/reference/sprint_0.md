@@ -1,21 +1,9 @@
+
+
 # Sprint 0 — Virtuální prostředí (Docker)
 
 !!! info "Cíl sprintu"
-    Mít připravené izolované prostředí pro OT/IT lab, postavené na Dockeru a docker-compose.  
-    Všechny další sprinty poběží uvnitř kontejnerů, aby se hostitelský systém nezanášel zbytečnými instalacemi.
-
----
-
-## Kontext
-- **Proč teď:**  
-  Před prvním technickým sprintem je vhodné oddělit testovací nástroje a služby od čistého hostitelského systému.  
-  Docker poskytuje rychlou a lehkou izolaci bez nutnosti provozovat plnohodnotnou virtuální mašinu.
-- **Cíl:**  
-  Umět nainstalovat Docker + docker-compose, spouštět základní kontejnery a připravit minimální stack pro Sprint 1 (Mosquitto + Node-RED).
-- **Výhody:**  
-  - Snadná replikace prostředí na jiném počítači
-  - Rychlý úklid (`docker rm`, `docker volume rm`)
-  - Možnost verzovat konfiguraci prostředí v Gitu
+  Mít připravené izolované prostředí pro OT/IT lab, postavené na Dockeru a docker-compose. Všechny další sprinty poběží uvnitř kontejnerů, aby se hostitelský systém nezanášel zbytečnými instalacemi.
 
 ---
 
@@ -33,12 +21,44 @@
 
 ---
 
-## Architektura
+## Pravidla práce (WIP)
+
+- Nejprve ověř, že Docker a docker-compose fungují.
+- Každý krok si ověř na vlastním stroji, až pak pokračuj dál.
+- Dokumentační úkol přidej hned po dokončení technického kroku.
+
+---
+
+## Kritéria pro review
+
+- Docker Desktop je nainstalovaný a funkční (ověřeno příkazem `docker run hello-world`).
+- docker-compose spustí stack Mosquitto + Node-RED bez chyb.
+- Kontejnery běží, lze se připojit na Mosquitto (port 1883) a Node-RED (port 1880).
+- V Gitu je commitnutý docker-compose.yml a základní dokumentace.
+
+---
+
+## Rizika
+
+- Problémy s WSL2 nebo Virtual Machine Platform na Windows.
+- Kolize portů na hostitelském systému.
+- Zapomenuté čištění svazků a obrazů může zabírat místo na disku.
+
+---
+
+## Kanban (vizualizace)
 
 ```mermaid
-flowchart LR
-    HostPC -->|Docker Engine| Containers
-    subgraph Containers
-        Mosquitto[(MQTT broker)]
-        NodeRED[Node-RED]
-    end
+kanban
+    section To Do
+      Instalace Docker Engine + Compose
+      Seznámení se s příkazy (run, ps, logs, exec)
+      Vytvoření docker-compose.yml pro Mosquitto + Node-RED
+      Persistentní svazky pro konfiguraci
+      How-to: Instalace Docker + Compose
+      How-to: Základní práce s kontejnery
+      Project page: Docker base env
+    section Doing
+      # (zatím prázdné)
+    section Done
+      # (zatím prázdné)
