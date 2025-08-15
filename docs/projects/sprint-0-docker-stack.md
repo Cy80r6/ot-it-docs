@@ -18,6 +18,9 @@
    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
    ```
 2. Restart počítače
+   ```powershell
+   Restart-Computer -Force
+   ``` 
 3. Stažení a instalace jádra WSL2
    - Stáhni z oficiální stránky Microsoftu: WSL2 Linux kernel update package
    - Nainstaluj .msi soubor.
