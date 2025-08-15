@@ -47,30 +47,40 @@ markdown_extensions:
 
 nav:
   - Úvod: index.md
-  - Projekty:
-    - Šablony:
-      - Šablona projektu: projects/templates/project-template.md
-    - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
   - How-to:
+    - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
+    - "Instalace Mosquitto": how-to/instalace-mosquitto.md
+    - "Instalace Node-RED": how-to/instalace-node-red.md
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
     - "Node-RED: základní flow": how-to/node-red-zakladni-flow.md
     - "ESP32 → MQTT": how-to/esp32-mqtt.md
+    - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
+    - "HiveMQ napojení": how-to/hivemq-napojeni.md
+    - "InfluxDB instalace": how-to/influxdb-instalace.md
+    - "Node-RED → InfluxDB": how-to/node-red-influxdb.md
+    - "Node-RED dashboard (historie)": how-to/node-red-dashboard-historie.md
     - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
     - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
     - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
-    - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
+  - "CI/CD: GitHub Actions pro MkDocs": how-to/ci-cd-github-actions.md
+  - "CI/CD: Mike pro verze dokumentace": how-to/ci-cd-mike.md
+  - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
     - "CI/CD: GitHub Actions pro MkDocs": how-to/ci-cd-github-actions.md
     - "CI/CD: Mike pro verze dokumentace": how-to/ci-cd-mike.md
     - Šablona how-to: how-to/templates/how-to-template.md
   - Projekty:
     - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
-    - "Projekt 2: OPC UA simulace + bridge do MQTT": projects/project-2-opcua-simulace.md
-    - "Projekt 3: MQTT do cloudu + historická data": projects/project-3-mqtt-cloud.md  
+    - "Projekt 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-simulace.md
+    - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud.md
+    - Šablona projektu: projects/templates/project-template.md  
   - Playbooks:
       - README: playbooks/README.md
       - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
+  - ADR:
+      - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
+      - Šablona ADR: adr/adr-template.md
   - Reference:
       - README: reference/README.md
       - Slovníček pojmů: reference/slovnicek.md
@@ -81,6 +91,4 @@ nav:
           - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
           - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
           - Šablona sprintu: reference/sprint_template.md
-  - ADR:
-      - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
-      - Šablona ADR: adr/adr-template.md
+  
