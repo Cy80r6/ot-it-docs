@@ -67,15 +67,15 @@ nav:
       - README: playbooks/README.md
       - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
   - Reference:
-    - README: reference/README.md
-  - Slovníček pojmů: reference/slovnicek.md
-  - Co je ADR (Architecture Decision Record): reference/adr-vysvetleni.md
-  - Sprinty:
-      - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
-      - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
-      - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
-      - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
-      - Šablona sprintu: reference/sprint_template.md
+      - README: reference/README.md
+      - Slovníček pojmů: reference/slovnicek.md
+      - Co je ADR (Architecture Decision Record): reference/adr-vysvetleni.md
+      - Sprinty:
+          - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
+          - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
+          - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
+          - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
+          - Šablona sprintu: reference/sprint_template.md
   - ADR:
       - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
       - Šablona ADR: adr/adr-template.md
