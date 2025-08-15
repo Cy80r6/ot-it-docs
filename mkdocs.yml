@@ -67,6 +67,7 @@ nav:
           - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
           - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
   - ADR:
+      - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
       - Šablona ADR: adr/adr-template.md
   - Vysvětlivky:
       - Abecední zkratky: includes/abbr.md
