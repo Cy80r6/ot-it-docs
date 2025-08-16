@@ -11,7 +11,7 @@ Tato stránka shrnuje architekturu a základní informace k výchozímu Docker s
 ## Odkazy
 - [How-to: Instalace Docker + Compose](../how-to/instalace-docker-compose.md)
 - [How-to: Základní práce s kontejnery](../how-to/zakladni-prace-s-kontejnery.md)
-- [ADR 0001: Docker stack jako výchozí prostředí](../adr/adr-0001-docker-stack.md)
+- [ADR 0001: Docker stack jako výchozí prostředí](../adr/adr-0002-docker-stack.md)
 - [Sprint 0 — Docker stack: Mosquitto + Node-RED](sprint-0-docker-stack.md)
 
 ## Co pokrývá

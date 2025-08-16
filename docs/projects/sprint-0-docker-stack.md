@@ -2,7 +2,7 @@
 
 # Sprint 0 — Docker stack: Mosquitto + Node-RED
 
-> **Tato stránka je konkrétní realizací [šablony Sprintu 0](../reference/templates/sprint.md).**
+> **Tato stránka je konkrétní realizací [šablony Sprintu 0](../reference/templates/sprint_template.md).**
 
 ## Kontext
 - **Výchozí stav:** Hostitelský systém je čistý, cílem je připravit izolované prostředí pro další vývoj a testování.

@@ -4,7 +4,7 @@
 !!! info "Jednou větou"
     Spusť Mosquitto a Node‑RED v Dockeru → otestuj payload → otevři dashboard.
 
-> Tento postup vychází z [ADR 0002: Docker stack jako výchozí prostředí](../adr/adr-0001-docker-stack.md).
+> Tento postup vychází z [ADR 0002: Docker stack jako výchozí prostředí](../adr/adr-0002-docker-stack.md).
 
 ## Předpoklady
 - Nainstalovaný Docker Desktop + WSL2 ([návod zde](instalace-docker-compose.md))

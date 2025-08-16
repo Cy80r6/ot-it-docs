@@ -1,5 +1,6 @@
 
-# {Název how‑to}
+# {Název how-to}
+--8<-- "includes/abbr.md"
 
 **Účel:** Co tím řeším a proč (1–2 věty).  
 **Předpoklady:** HW/SW, přístupy, verze, síť.  
