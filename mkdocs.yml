@@ -85,7 +85,7 @@ nav:
     - "Sprint 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-mqtt-bridge.md
     - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud-influxdb.md
     - "Sprint 4: Základy bezpečnosti OT ↔ IT": projects/sprint-4-ot-it-security.md
-    - "Docker base pro projekty": projects/docker-base.md
+    - "Docker base pro projekty": projects/docker-base-env.md
     - "Šablona projektu": projects/templates/project-template.md
 
   - Playbooks:
