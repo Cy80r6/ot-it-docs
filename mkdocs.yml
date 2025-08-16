@@ -53,49 +53,53 @@ extra_javascript:
 
 nav:
   - Úvod: index.md
-   
-  - How-to:  
-    - "Úvod do how-to": how-to/how-to.md
-    - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
-    - "Instalace Docker + Compose": how-to/instalace-docker-compose.md
-    - "Základní práce s kontejnery": how-to/zakladni-prace-s-kontejnery.md
-    - "Instalace Mosquitto": how-to/instalace-mosquitto.md
-    - "Instalace Node-RED": how-to/instalace-node-red.md
-    - "MQTT Explorer": how-to/mqtt-explorer.md
-    - "ESP32 → MQTT": how-to/esp32-mqtt.md
-    - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
-    - "HiveMQ napojení": how-to/hivemq-napojeni.md
-    - "InfluxDB instalace": how-to/influxdb-instalace.md
-    - "Node-RED → InfluxDB": how-to/node-red-influxdb.md
-    - "Node-RED dashboard (historie)": how-to/node-red-dashboard-historie.md
-    - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
-    - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
-    - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
-    - Šablona how-to: how-to/templates/how-to-template.md
-  
+
+  - How-to:
+      - "Úvod do how-to": how-to/how-to.md
+      - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
+      - "Instalace Docker + Compose": how-to/instalace-docker-compose.md
+      - "Základní práce s kontejnery": how-to/zakladni-prace-s-kontejnery.md
+      - "Instalace Mosquitto": how-to/instalace-mosquitto.md
+      - "Instalace Node-RED": how-to/instalace-node-red.md
+      - "MQTT Explorer": how-to/mqtt-explorer.md
+      - "ESP32 → MQTT": how-to/esp32-mqtt.md
+      - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
+      - "HiveMQ napojení": how-to/hivemq-napojeni.md
+      - "InfluxDB instalace": how-to/influxdb-instalace.md
+      - "Node-RED → InfluxDB": how-to/node-red-influxdb.md
+      - "Node-RED dashboard (historie)": how-to/node-red-dashboard-historie.md
+      - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
+      - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
+      - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+      - "Šablona how-to": how-to/templates/how-to-template.md
+
   - Projekty:
-    - "Sprint 0: Docker stack (Mosquitto + Node-RED)": projects/sprint-0-docker-stack.md
-    - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
-    - "Sprint 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-mqtt-bridge.md
-    - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud-influxdb.md
-    - Šablona projektu: projects/templates/project-template.md
+      - "Sprint 0: Docker stack (Mosquitto + Node-RED)": projects/sprint-0-docker-stack.md
+      - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
+      - "Sprint 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-mqtt-bridge.md
+      - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud-influxdb.md
+      - "Šablona projektu": projects/templates/project-template.md
+
   - Playbooks:
-  - README: playbooks/README.md
-  - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
-  - "OT/IT segmentace": playbooks/ot-it-segmentace.md
+      - README: playbooks/README.md
+      - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
+      - "OT/IT segmentace": playbooks/ot-it-segmentace.md
+
   - ADR:
-  - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
-  - "ADR 0002: Docker stack jako výchozí prostředí": adr/adr-0002-docker-stack.md
-  - Šablona ADR: adr/adr-template.md
+      - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
+      - "ADR 0002: Docker stack jako výchozí prostředí": adr/adr-0002-docker-stack.md
+      - "Šablona ADR": adr/adr-template.md
+
   - Reference:
       - README: reference/README.md
-      - Slovníček pojmů: reference/slovnicek.md
-      - Co je ADR (Architecture Decision Record): reference/adr-vysvetleni.md
+      - "Slovníček pojmů": reference/slovnicek.md
+      - "Co je ADR (Architecture Decision Record)": reference/adr-vysvetleni.md
       - Sprinty:
-        - "Sprint 0: Docker stack (Mosquitto + Node-RED)": reference/sprint_0.md
-        - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
-        - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
-        - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
-        - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
-        - Šablona sprintu: reference/sprint_template.md
+          - "Sprint 0: Docker stack (Mosquitto + Node-RED)": reference/sprint_0.md
+          - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
+          - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
+          - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
+          - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
+          - "Šablona sprintu": reference/sprint_template.md
+
   
