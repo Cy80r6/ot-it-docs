@@ -1,11 +1,12 @@
-# Sprint 4 — Základy bezpečnosti OT ↔ IT
+
+# Sprint 4 — Základy bezpečnosti OT ↔ IT (šablona)
 
 !!! info "Cíl sprintu"
-    Přidat základní bezpečnostní opatření (TLS, autentizace, VLAN segmentace) do současné architektury.
+        Přidat základní bezpečnostní opatření (TLS, autentizace, VLAN segmentace) do současné architektury.
 
 ---
 
-## Backlog → To Do (Sprint 4)
+## Backlog (To Do)
 
 | Kategorie      | Úkol                         | Popis / Akceptační kritéria | Odhad |
 |----------------|------------------------------|-----------------------------|-------|
@@ -13,16 +14,47 @@
 |                | OPC UA SecureChannel         | Povolit šifrování a auth v OPC UA serveru | 0,5 dne |
 |                | VLAN segmentace (lab)        | Oddělené VLAN pro OT/IT, ping test | 1 den |
 |                | Firewall na Edge             | Otevřené jen nezbytné porty | 0,5 dne |
-| **Dokumentace**| How-to: MQTT TLS              | Účel, kroky, ověření, rollback | 0,5 dne |
-|                | How-to: OPC UA SecureChannel | Účel, kroky, ověření, rollback | 0,5 dne |
-|                | Playbook: OT/IT segmentace   | Postup, schéma, testy | 0,5 dne |
+| **Dokumentace**| [How-to: MQTT TLS](../how-to/mqtt-tls.md)              | Účel, kroky, ověření, rollback | 0,5 dne |
+|                | [How-to: OPC UA SecureChannel](../how-to/opcua-securechannel.md) | Účel, kroky, ověření, rollback | 0,5 dne |
+|                | [Playbook: OT/IT segmentace](../playbooks/ot-it-segmentace.md)   | Postup, schéma, testy | 0,5 dne |
 
 ---
 
-## Review kritéria
+## Kritéria pro review
+
 - MQTT Explorer připojí jen klient s certifikátem/heslem.
 - OPC UA klient se připojí jen přes zabezpečený kanál.
 - VLAN funguje (OT → IT jen přes Edge).
 - Web má 3 nové bezpečnostní návody.
 
 ---
+
+## Rizika
+
+- Chyby v konfiguraci TLS mohou znemožnit připojení klientů
+- Nesprávné nastavení VLAN může způsobit ztrátu konektivity
+- Nedostatečné zabezpečení hesel nebo certifikátů
+
+---
+
+## Kanban (vizualizace)
+
+```mermaid
+kanban
+        section To Do
+            MQTT TLS + hesla
+            OPC UA SecureChannel
+            VLAN segmentace (lab)
+            Firewall na Edge
+            How-to: MQTT TLS
+            How-to: OPC UA SecureChannel
+            Playbook: OT/IT segmentace
+        section Doing
+            # (zatím prázdné)
+        section Done
+            # (zatím prázdné)
+```
+
+---
+
+> Konkrétní realizace sprintu najdeš v sekci [Projects](../projects/).

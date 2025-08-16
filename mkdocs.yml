@@ -55,21 +55,10 @@ nav:
   - Úvod: index.md
   - How-to:
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
-    - "Instalace Mosquitto": how-to/instalace-mosquitto.md
-    - "Instalace Node-RED": how-to/instalace-node-red.md
-    - "Node-RED: základní flow": how-to/node-red-zakladni-flow.md
-    - "ESP32 → MQTT": how-to/esp32-mqtt.md
-    - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
-    - "HiveMQ napojení": how-to/hivemq-napojeni.md
-    - "InfluxDB instalace": how-to/influxdb-instalace.md
-    - "Node-RED → InfluxDB": how-to/node-red-influxdb.md
-    - "Node-RED dashboard (historie)": how-to/node-red-dashboard-historie.md
-    - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
-    - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
-    - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+    - "Instalace Docker + Compose": how-to/instalace-docker-compose.md
+    - "Základní práce s kontejnery": how-to/zakladni-prace-s-kontejnery.md
     - "CI/CD: MkDocs → GitHub Pages": how-to/ci-cd-mkdocs-pages.md
     - "CI/CD: GitHub Actions pro MkDocs": how-to/ci-cd-github-actions.md
-    - "CI/CD: Mike pro verze dokumentace": how-to/ci-cd-mike.md
     - "CI/CD: Mike pro verze dokumentace": how-to/ci-cd-mike.md
     - Šablona how-to: how-to/templates/how-to-template.md
   - Projekty:
