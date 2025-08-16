@@ -14,7 +14,7 @@
 |                | OPC UA SecureChannel         | Povolit šifrování a auth v OPC UA serveru | 0,5 dne |
 |                | VLAN segmentace (lab)        | Oddělené VLAN pro OT/IT, ping test | 1 den |
 |                | Firewall na Edge             | Otevřené jen nezbytné porty | 0,5 dne |
-| **Dokumentace**| [How-to: MQTT TLS](../how-to/mqtt-tls.md)              | Účel, kroky, ověření, rollback | 0,5 dne |
+| **Dokumentace**| [How-to: Mosquitto Security](../how-to/mosquitto-security.md)              | Účel, kroky, ověření, rollback | 0,5 dne |
 |                | [How-to: OPC UA SecureChannel](../how-to/opcua-securechannel.md) | Účel, kroky, ověření, rollback | 0,5 dne |
 |                | [Playbook: OT/IT segmentace](../playbooks/ot-it-segmentace.md)   | Postup, schéma, testy | 0,5 dne |
 

@@ -57,6 +57,9 @@ nav:
   - How-to:
     - "Úvod do how-to": how-to/how-to.md
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
+    - "CI-CD s GitHub Actions": how-to/ci-cd-github-actions.md
+    - "CI-CD mike": how-to/ci-cd-mike.md
+    - "CI-CD mkdocs": how-to/ci-cd-mkdocs.md
     - "Instalace Docker + Compose": how-to/instalace-docker-compose.md
     - "Základní práce s kontejnery": how-to/zakladni-prace-s-kontejnery.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
@@ -69,8 +72,7 @@ nav:
     - "Node-RED → InfluxDB": how-to/node-red-influxdb.md
     - "Node-RED dashboard (historie)": how-to/node-red-dashboard-historie.md
     - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
-    - "Mosquitto: TLS, auth, ACL, QoS": how-to/mosquitto-security.md
-    - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+    - "Mosquitto Security (TLS, auth, ACL, QoS)": how-to/mosquitto-security.md
     - "Šablona how-to": how-to/templates/how-to-template.md
 
   - Projekty:
