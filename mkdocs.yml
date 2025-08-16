@@ -71,8 +71,9 @@ nav:
       - README: playbooks/README.md
       - "Runbook: Start/Stop labu": playbooks/runbook-lab-start.md
   - ADR:
-      - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
-      - Šablona ADR: adr/adr-template.md
+  - "ADR 0001: Volba stacku": adr/adr-0001-volba-stacku.md
+  - "ADR 0002: Docker stack jako výchozí prostředí": adr/adr-0002-docker-stack.md
+  - Šablona ADR: adr/adr-template.md
   - Reference:
       - README: reference/README.md
       - Slovníček pojmů: reference/slovnicek.md
