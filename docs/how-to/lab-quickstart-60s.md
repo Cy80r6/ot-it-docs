@@ -1,31 +1,56 @@
-# Lab Quickstart (60 s)
+
+# Lab Quickstart (60 s) — Docker Compose
 
 !!! info "Jednou větou"
-    Spusť Mosquitto → Node‑RED → otestuj payload → otevři dashboard.
+    Spusť Mosquitto a Node‑RED v Dockeru → otestuj payload → otevři dashboard.
+
+> Tento postup vychází z [ADR 0002: Docker stack jako výchozí prostředí](../adr/adr-0001-docker-stack.md).
+
+## Předpoklady
+- Nainstalovaný Docker Desktop + WSL2 ([návod zde](instalace-docker-compose.md))
+- Připravený adresář s `docker-compose.yml` (viz [Sprint 0](../projects/sprint-0-docker-stack.md))
 
 ## Kroky
-1. **Mosquitto**
+1. **Spusť lab stack**
+   V adresáři s `docker-compose.yml` spusť:
    ```powershell
-   "C:\mosquitto\mosquitto.exe" -c "C:\mosquitto\mosquitto.conf"
+   docker compose up -d
    ```
+   (Spustí Mosquitto a Node-RED v kontejnerech.)
 
-2. **Node‑RED**
+2. **Ověř běh služeb**
    ```powershell
-   node-red
+   docker ps
    ```
+   Měl bys vidět oba kontejnery (mosquitto, nodered) a porty 1883, 1880.
 
-3. **Test payload (MQTT Explorer)**
-   - Topic: lab/esp32/telemetry/temperature
-   - Payload:
+3. **Test payload (MQTT Explorer nebo WSL2)**
+   - Připoj se v MQTT Exploreru na `localhost:1883`.
+   - Subscribe na topic: `lab/esp32/telemetry/temperature`
+   - Publish na stejný topic, payload:
      ```json
      {"ts": 1734300000, "value": 23.7, "unit": "C"}
      ```
+   - Alternativně z WSL2:
+     ```bash
+     mosquitto_pub -h localhost -t lab/esp32/telemetry/temperature -m '{"ts": 1734300000, "value": 23.7, "unit": "C"}'
+     ```
 
 4. **Dashboard**
-   - Otevři http://127.0.0.1:1880/ui a zkontroluj graf + text.
+   - Otevři [http://localhost:1880/ui](http://localhost:1880/ui) a zkontroluj graf + text.
 
 ---
 
 ## Co dělat, když to neukáže data
-- Přidej v Node‑RED debug node a koukej na msg.payload.
-- Zkontroluj, že MQTT in má správný topic (lab/+/telemetry/#).
+- Přidej v Node‑RED debug node a sleduj `msg.payload`.
+- Zkontroluj, že MQTT in má správný topic (`lab/+/telemetry/#`).
+- Ověř logy kontejnerů:
+  ```powershell
+  docker compose logs mosquitto
+  docker compose logs nodered
+  ```
+- Ověř, že v `mosquitto.conf` je `listener 1883` a `allow_anonymous true` (viz [Sprint 0](../projects/sprint-0-docker-stack.md)).
+
+---
+
+> Ruční spouštění Mosquitto a Node-RED na hostitelském systému je legacy varianta a není doporučeno.

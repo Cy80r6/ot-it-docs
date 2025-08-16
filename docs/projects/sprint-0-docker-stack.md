@@ -1,87 +1,35 @@
 
+
 # Sprint 0 — Docker stack: Mosquitto + Node-RED
 
-## 1. Instalace Dockeru na Windows + WSL2
+> **Tato stránka je konkrétní realizací [šablony Sprintu 0](../reference/templates/sprint.md).**
 
-!!! info "Účel"
-    Připravit Windows 10/11 systém na běh Docker Engine pomocí Windows Subsystem for Linux verze 2 (WSL2) a nainstalovat Docker Desktop s podporou docker-compose.
-
-### Předpoklady
-- Windows 10 (build 19041 a vyšší) nebo Windows 11
-- Administrátorský přístup
-- Stabilní internetové připojení
+## Kontext
+- **Výchozí stav:** Hostitelský systém je čistý, cílem je připravit izolované prostředí pro další vývoj a testování.
+- **Cíl:** Připravit základní Docker stack (Mosquitto + Node-RED) jako startovací bod pro další sprinty.
 
 
-### Kroky (rychlá varianta)
-1. Pro většinu uživatelů stačí spustit v PowerShellu jediný příkaz, který provede kroky 1–8 najednou:
-   ```powershell
-   wsl --install
-   ```
-   Tento příkaz automaticky aktivuje potřebné Windows komponenty, stáhne a nastaví WSL2, nainstaluje výchozí Linux distribuci (např. Ubuntu) a provede restart počítače.
+## 1. Instalace Dockeru a Compose
 
-2. Po restartu spusť nově nainstalovanou Linux distribuci (např. Ubuntu) a nastav uživatelské jméno a heslo.
+Podrobný návod najdeš v [How-to: Instalace Docker + Compose](../how-to/instalace-docker-compose.md).
 
-3. Stáhni a nainstaluj Docker Desktop:
-   - https://www.docker.com/products/docker-desktop/
-   - Během instalace zaškrtni "Use the WSL 2 based engine".
-   - Po instalaci spusť Docker Desktop a v Settings → Resources → WSL Integration povol svou Linux distribuci.
+Základní kroky:
+- Spusť `wsl --install` v PowerShellu (Windows 11).
+- Po restartu nastav uživatelské jméno v Ubuntu.
+- Stáhni a nainstaluj Docker Desktop, povol WSL2 backend.
+- Ověř instalaci příkazy `docker version`, `docker compose version`, `docker run hello-world`.
 
-4. Ověření instalace:
-   ```powershell
-   docker version
-   docker compose version
-   ```
-   - Příkaz `docker run hello-world` by měl zobrazit uvítací zprávu z Dockeru.
-
----
-
-> **Poznámka:** Pokud potřebujete detailní ruční postup (například pro firemní prostředí nebo při chybě automatické instalace), použijte rozšířený návod v předchozích verzích dokumentace nebo na webu Microsoftu.
+Rollback a odinstalace: viz [How-to: Instalace Docker + Compose](../how-to/instalace-docker-compose.md).
 
 
-### Ověření funkčnosti docker-compose a GPU
 
-#### 1. Ověření orchestrátoru (Hello world)
+## 2. Ověření funkčnosti Docker Compose a GPU
 
-Nejprve si vytvoř složku pro testování Docker Compose, například:
+Základní testy najdeš v [How-to: Základní práce s kontejnery](../how-to/zakladni-prace-s-kontejnery.md).
 
-```powershell
-mkdir ~/docker-tests
-cd ~/docker-tests
-```
+**GPU podpora:**
+Pokud máš NVIDIA GPU, postupuj podle [oficiálního návodu NVIDIA](https://docs.nvidia.com/cuda/wsl-user-guide/index.html) a [How-to: Instalace Docker + Compose](../how-to/instalace-docker-compose.md).
 
-V této složce vytvoř soubor `docker-compose.yml` s tímto obsahem:
-
-```yaml
-version: "3.9"
-services:
-  hello:
-    image: hello-world
-```
-
-Spusť:
-```powershell
-docker compose up
-```
-
-Pokud se zobrazí zpráva z hello-world kontejneru, Docker Compose funguje správně.
-
-> **Poznámka:** docker compose hledá soubor `docker-compose.yml` v aktuálním adresáři, odkud příkaz spouštíš. Pro každý projekt je vhodné mít vlastní složku.
-
-#### 2. Ověření GPU podpory (volitelné)
-
-Pokud máš v PC NVIDIA GPU a chceš ji využívat v kontejnerech:
-
-- Nainstaluj NVIDIA Container Toolkit (viz sekce výše ve WSL distribuci).
-- Restartuj Docker Desktop.
-- Spusť testovací kontejner:
-
-```powershell
-docker run --rm --gpus all nvidia/cuda:12.6.2-base-ubuntu22.04 nvidia-smi
-```
-
-Pokud se ve výstupu objeví tvoje karta (např. GeForce RTX 4070 Ti), Docker správně používá lokální GPU.
-
----
 
 ### Rollback / Odinstalace
 - Odinstaluj Docker Desktop z Nastavení → Aplikace
@@ -125,10 +73,17 @@ Pokud máš v PC NVIDIA GPU a chceš ji využít v kontejnerech (např. pro AI n
 
 > **Poznámka:** Pro detailní návod viz oficiální dokumentaci Dockeru a NVIDIA (https://docs.nvidia.com/cuda/wsl-user-guide/index.html).
 
-### Lessons learned
+
+---
+
+## Lessons learned
 - WSL2 je rychlejší než starší Hyper-V backend a má nižší nároky na RAM.
 - Pokud máš více Linux distribucí, v Docker Desktop nastav, která má běžet s Dockerem.
 - Na slabších strojích pomůže snížení přidělené RAM a CPU v Settings → Resources.
+- Pokud v docker-compose.yml mapuješ vlastní config pro Mosquitto, musíš ho opravdu vytvořit, jinak broker nenastartuje.
+- MQTT Explorer je skvělý nástroj na rychlé ověření komunikace, ale vždy ověř i logy kontejneru.
+
+---
 
 ---
 
@@ -348,6 +303,8 @@ services:
 
 ---
 
+
 ## Další kroky
+- [Projekt: Docker base env](docker-base-env.md) — architektura a rozšiřitelnost stacku
 - Sprint 1: Lokální MQTT tok (ESP32 → Mosquitto → Node-RED dashboard)
 - Přidat InfluxDB do stacku ve Sprintu 3.
