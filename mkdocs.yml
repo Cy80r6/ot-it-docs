@@ -59,13 +59,16 @@ nav:
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
     - "CI-CD s GitHub Actions": how-to/ci-cd-github-actions.md
     - "CI-CD mike": how-to/ci-cd-mike.md
-    - "CI-CD mkdocs": how-to/ci-cd-mkdocs.md
+    - "CI-CD mkdocs": how-to/ci-cd-mkdocs-pages.md
     - "Instalace Docker + Compose": how-to/instalace-docker-compose.md
     - "Základní práce s kontejnery": how-to/zakladni-prace-s-kontejnery.md
     - "Instalace Mosquitto": how-to/instalace-mosquitto.md
     - "Instalace Node-RED": how-to/instalace-node-red.md
+    - "Základní práce s Node-RED": how-to/zakladni-prace-s-node-red.md
+    - "Node-RED zakladni flow": how-to/node-red-zakladni-flow.md
     - "MQTT Explorer": how-to/mqtt-explorer.md
     - "ESP32 → MQTT": how-to/esp32-mqtt.md
+    - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
     - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
     - "HiveMQ napojení": how-to/hivemq-napojeni.md
     - "InfluxDB instalace": how-to/influxdb-instalace.md
@@ -73,6 +76,7 @@ nav:
     - "Node-RED dashboard (historie)": how-to/node-red-dashboard-historie.md
     - "Edge gateway: OPC UA → MQTT v Node-RED": how-to/edge-gateway-opcua-mqtt.md
     - "Mosquitto Security (TLS, auth, ACL, QoS)": how-to/mosquitto-security.md
+    - "OPC UA SecureChannel": how-to/opcua-securechannel.md
     - "Šablona how-to": how-to/templates/how-to-template.md
 
   - Projekty:
@@ -80,6 +84,8 @@ nav:
     - "Sprint 1: Lokální MQTT tok": projects/sprint-1-lokalni-mqtt-tok.md
     - "Sprint 2: OPC UA simulace + bridge do MQTT": projects/sprint-2-opcua-mqtt-bridge.md
     - "Projekt 3: MQTT do cloudu + historická data": projects/sprint-3-mqtt-cloud-influxdb.md
+    - "Sprint 4: Základy bezpečnosti OT ↔ IT": projects/sprint-4-ot-it-security.md
+    - "Docker base pro projekty": projects/docker-base.md
     - "Šablona projektu": projects/templates/project-template.md
 
   - Playbooks:
