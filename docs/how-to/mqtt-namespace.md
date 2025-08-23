@@ -48,10 +48,35 @@ v1/<org>/<site>/<device>/<channel>/<metric>
 - Všechny metriky jednoho zařízení: `v1/home/lab/esp32-01/+/+#`
 - Jen teploty: `v1/home/lab/+/tele/temperature`
 
+
+## Retain vlajka v MQTT
+
+V MQTT je `retain` vlajka, kterou nastavíš při publikování zprávy. Znamená to:
+
+- Broker si tu zprávu zapamatuje jako „poslední známou“ pro daný topic.
+- Když se někdo nový přihlásí (subscribe) na ten topic, broker mu hned pošle tu uloženou zprávu, aniž by čekal na další publish od zařízení.
+- Zůstává tam tak dlouho, dokud ji někdo nenahradí novou retained zprávou (nebo publishne „prázdnou“ s retain=1 → to smaže uloženou).
+
+**Příklad:**
+
+ESP32 publikuje:
+
+topic: home/lab/esp32-01/meta/status
+payload: "ONLINE"
+retain: true
+
+Broker si to uloží.
+
+Když se Node-RED restartuje a znovu se přihlásí na ten topic, hned dostane „ONLINE“, i když mezitím ESP32 nic neposlalo.
+
+To je ideální na stav zařízení, konfiguraci, poslední známé hodnoty.
+
+Naopak na rychle se měnící telemetrii (temperature každých 5 s) to nedává smysl – nechceš, aby se stará hodnota tvářila jako čerstvá.
+
 ## Retain & QoS
-- Retain = ANO: meta/status, state, cfg
-- Retain = NE: tele, evt, cmd
-- QoS: tele na 0, cmd/evt/meta/cfg typicky 1
+Retain = ANO: meta/status, state, cfg
+Retain = NE: tele, evt, cmd
+QoS: tele na 0, cmd/evt/meta/cfg typicky 1
 
 ## Payload konvence
 - Telemetrie: číslo nebo JSON {"value":22.8,"unit":"°C","ts":...}
