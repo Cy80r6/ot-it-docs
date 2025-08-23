@@ -104,6 +104,7 @@ nav:
     - README: reference/README.md
     - "Slovníček pojmů": reference/slovnicek.md
     - "Co je ADR (Architecture Decision Record)": reference/adr-vysvetleni.md
+    - "LWT v MQTT (Last Will & Testament)": reference/lwt.md
     - Sprinty:
       - "Sprint 0: Docker stack (Mosquitto + Node-RED)": reference/sprint_0.md
       - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
