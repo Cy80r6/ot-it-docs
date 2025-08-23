@@ -1979,3 +1979,7 @@
 1755345618: Opening ipv4 listen socket on port 1883.
 1755345618: Opening ipv6 listen socket on port 1883.
 1755345618: mosquitto version 2.0.22 running
+1755347438: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1755349265: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1755351089: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1755352911: Saving in-memory database to /mosquitto/data//mosquitto.db.

@@ -20,7 +20,7 @@ flowchart LR
     ESP32 -->|MQTT publish| Mosquitto[(Mosquitto broker)]
     Mosquitto -->|subscribe| NodeRED[Node-RED]
     NodeRED -->|dashboard| WebUI[Dashboard /ui]
-
+```
 
 ---
 
