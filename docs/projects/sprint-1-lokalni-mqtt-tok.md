@@ -1,59 +1,129 @@
-# Sprint 1 — Lokální MQTT tok + první dokumentace
 
-!!! info "Jednou větou"
-    První funkční řetězec **ESP32 → MQTT broker → Node-RED dashboard**  
-    a začátek jednotné dokumentace v OT/IT Docs webu.
+# Sprint 1 — Lokální MQTT tok (ESP32 → Mosquitto → Node-RED)
 
----
-
-## Kontext
-- **Výchozí stav:** Web běží na MkDocs Material + GitHub Pages, CI/CD hotové.
-- **Cíl:** Naučit se základy sběru a zobrazení dat (MQTT, Node-RED, ESP32) a u toho zavést standard psaní How-to.
-- **Proč teď:** To, co vybudujeme, je základ pro všechny další sprinty – bez funkčního toku dat nemá analytika ani bezpečnost na co navazovat.
+!!! info "Kontext a cíl"
+        Výchozí stav: Docker stack s Mosquitto a Node-RED z Sprint-0 běží na localhostu.
+    
+        Cíl: Vést první reálný datový tok z ESP32 do MQTT a vizualizovat ho v Node-RED dashboardu + založit minimální dokumentaci (How-to, ADR, Project page).
+    
+        Proč takto: Je to nejkratší „end-to-end“ výsledek, na který se později bezpečně vrství zabezpečení, historizace a další integrace.
 
 ---
 
-## Architektura
+## Přehled kroků (high-level)
+
+| # | Co | Proč |
+|---|----|------|
+| 1 | Ověřit stav stacku z Sprint-0 (porty 1883/1880, logy) | Minimalizace šumu – ať nehoníš chybu jinde. |
+| 2 | Navrhnout topic namespace | Stabilní jmenný prostor šetří refaktoring a debug. |
+| 3 | Nastavit Mosquitto pro lokální vývoj | Transparentní testy, později snadná výměna za TLS. |
+| 4 | Připravit Node-RED dashboard (1 graf, 1 text) | Rychlá vizuální zpětná vazba. |
+| 5 | Publikovat z ESP32 periodická data | První skutečný producent dat, test stabilní konektivity. |
+| 6 | Ověřit tok (MQTT Explorer, Node-RED, logy) | Uzavření smyčky, „Definition of Done“. |
+| 7 | Založit dokumentaci (How-to, ADR, Project page) | Udržitelnost, přenositelnost, opakovatelnost. |
+
+---
+
+## Krok-po-kroku (detail)
+
+### 1) Ověření stacku ze Sprint-0
+Zkontroluj běh obou kontejnerů, mapované porty 1883 (MQTT) a 1880 (Node-RED), logy Mosquitta bez „local only mode…“, dostupnost Node-RED UI.
+Proč: Eliminuješ falešné chyby v dalších krocích. Vzor kontrol najdeš ve Sprint-0 (sekce „Ověření běhu…“).
+
+### 2) Návrh topic namespace (minimální konvence)
+Princip: `[org]/[site]/[device]/[sensor]/[metric]`
+Příklad: `home/lab/esp32-01/env/temperature`
+Doplňky: QoS 0, retain jen pro „poslední známou hodnotu“.
+Proč: Jednou zvolený pattern snižuje budoucí drift v Node-RED flow a v InfluxDB/Power BI.
+
+### 3) Mosquitto – lokální vývojový profil
+Cíl: Lokální broker akceptuje připojení z hostitele i ESP32 v LAN bez TLS, volitelně s heslem.
+Minimální nastavení: listener na 1883, persistence on, log do souboru, allow_anonymous (jen pro lab). Vzor i typické chybové stavy máš popsány ve Sprint-0.
+Proč: Stabilní lokální playground; bezpečnost (TLS, ACL, password_file) přidáš ve Sprintu 4.
+
+### 4) Node-RED – základní flow + dashboard
+Cíl: Jednoduchý tok „MQTT in → (optional transform) → text + chart“.
+MQTT in: subscribe na konkrétní topic z bodu 2.
+Transform: jednoduchý převod na číslo + timestamp (kvůli grafu).
+Dashboard: jeden „text“ (aktuální hodnota) a jeden „chart“ (posledních X minut).
+Proč: Vidíš živá data bez složitostí.
+
+### 5) ESP32 – publikace telemetrie
+Cíl: Každých 5–10 s poslat metrickou hodnotu na zvolený topic.
+Parametry: SSID/heslo, IP brokera (lokální), clientId, keepalive ~60 s, last-will (volitelné).
+Knihovna: pro start PubSubClient; Async varianta až později.
+Proč: Ověříš realitu (Wi-Fi, MQTT reconnect, latence), ne jen lab s PC.
+
+### 6) End-to-end ověření
+MQTT Explorer: subscribe na vybraný topic, sleduj payload, Node-RED dashboard zobrazuje živý text i graf, logy Mosquitta kontrolují připojení klienta ESP32.
+Proč: Potvrzení, že vše (síť, broker, transformace, UI) drží pohromadě.
+
+### 7) Dokumentace
+Vytvoř 3 minimální stránky (How-to, ADR, Project):
+- How-to: „Mosquitto – lokální broker“ (setup + ověření)
+- How-to: „Node-RED – základní flow a dashboard“
+- ADR-0001 „Volba stacku“
+- Project „Sprint-1“ – cíl, přínos, odkazy na How-to, DoD
+
+---
+
+## Definition of Done (DoD)
+- MQTT Explorer zobrazuje data z ESP32 v reálném čase na dohodnutém topicu.
+- Node-RED dashboard: 1 text + 1 graf, aktualizace do 2 s od publikace.
+- Repo/web obsahují: 2× How-to, 1× ADR, 1× Project page s odkazy.
+
+---
+
+## Ověření a testy (rychlé scénáře)
+- „Happy path“: ESP32 běží 10 minut, žádný reconnect; graf průběžně roste.
+- Reconnect test: restart brokera; ESP32 do 30 s znovu připojen a publikuje.
+- Data test: payload je číslo nebo jednoduchý JSON s hodnotou + timestamp; Node-RED převod funguje.
+- Negativní: změna topicu na nesprávný → dashboard nic nezobrazuje (očekávané).
+
+---
+
+## Rollback / Cleanup
+- Zastavení stacku a vyčištění svazků pro „čistý start“ (viz Sprint-0 „Čištění“).
+- ESP32: revert sketch na „no-op“ (nepublikuje nic).
+- Dokumentace: ponech ADR/Project, How-to označ jako „WIP“ (label v hlavičce).
+
+---
+
+## Rizika a mitigace
+- Chybné mapování portů nebo prázdný config Mosquitta → broker nenaběhne správně; kontroluj log a existenci configu.
+- Nestabilní Wi-Fi → krátké publish intervaly odhalí reconnecty; přidej last-will.
+- Nekonzistentní topic names → od začátku drž konvenci z kroku 2.
+
+---
+
+## Kanban (návrh WIP-friendly toku)
 
 ```mermaid
-flowchart LR
-    ESP32 -->|MQTT publish| Mosquitto[(Mosquitto broker)]
-    Mosquitto -->|subscribe| NodeRED[Node-RED]
-    NodeRED -->|dashboard| WebUI[Dashboard /ui]
+kanban
+        section Backlog
+            Návrh topic namespace
+            Lokální profil Mosquitta pro vývoj
+            Minimální Node-RED dashboard
+            ESP32 publikační sketch
+            Ověřovací scénáře
+            Dokumentace (2× How-to, ADR-0001, Project)
+        section To Do
+            Zapnout a ověřit stack (Sprint-0)
+            Připravit topic konvenci a rozeslat do README
+        section Doing
+            Node-RED základní flow
+            ESP32 → MQTT publikace
+        section Review
+            Testovací scénáře (happy/negative)
+            Čtení a korektura How-to a ADR
+        section Done
+            DoD splněno, dashboard screenshot uložen do Project page
 ```
 
 ---
 
-## Postup (hlavní kroky)
-
-| Krok | Popis | Odkaz na How-to |
-|------|-------|-----------------|
-| 1 | Studijní blok: TCP/IP & VLAN – základní pojmy, topologie, návrh topic namespace | – |
-| 2 | Instalace Mosquitto – lokální broker na portu 1883 | Instalace Mosquitto |
-| 3 | Instalace Node-RED – spuštění editoru a UI | Instalace Node-RED |
-| 4 | Základní flow v Node-RED – MQTT in → Function → ui_chart/ui_text | Node-RED: základní flow |
-| 5 | ESP32 → MQTT – jednoduchý sketch s PubSubClient | ESP32 → MQTT |
-| 6 | Dokumentace – How-to, ADR 0001, Project page | ADR 0001 – Volba stacku |
-
----
-
-## Výsledek
-
-- MQTT Explorer zobrazuje data z ESP32 v reálném čase.
-- Node-RED dashboard má 1 graf a 1 textový widget.
-- Web obsahuje 3 nové stránky: How-to Mosquitto, ADR stack, Project Sprint 1.
-
----
-
-## Rizika / Lessons learned
-
-- Síťové nastavení: začít v jedné LAN, VLAN řešit až později.
-- MQTT bezpečnost: pro lab stačí heslo, TLS přijde ve Sprintu 4.
-- Disciplína v dokumentaci: každý krok má vlastní How-to, odkazy z Project page.
-
----
-
-## Další kroky
-
-- Sprint 2: OPC UA simulátor, bridge do MQTT.
-- Rozšířit dashboard o historická data z InfluxDB.
+## Odkazy a zdroje
+- [How-to: Instalace Mosquitto](../how-to/instalace-mosquitto.md)
+- [How-to: Node-RED základní flow](../how-to/node-red-zakladni-flow.md)
+- [How-to: ESP32 → MQTT](../how-to/esp32-mqtt.md)
+- [ADR-0001: Volba stacku](../adr/adr-0001-volba-stacku.md)
