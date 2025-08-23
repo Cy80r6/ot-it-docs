@@ -57,6 +57,7 @@ nav:
   - How-to:
     - "Úvod do how-to": how-to/how-to.md
     - "Lab Quickstart (60 s)": how-to/lab-quickstart-60s.md
+    - "Práce s docker-compose a Docker Desktop": how-to/prace-s-docker-compose.md
     - "CI-CD s GitHub Actions": how-to/ci-cd-github-actions.md
     - "CI-CD mike": how-to/ci-cd-mike.md
     - "CI-CD mkdocs": how-to/ci-cd-mkdocs-pages.md
@@ -69,6 +70,7 @@ nav:
     - "MQTT Explorer": how-to/mqtt-explorer.md
     - "ESP32 → MQTT": how-to/esp32-mqtt.md
     - "MQTT topic naming pro CNC": how-to/mqtt-topic-naming.md
+    - "Návrh MQTT namespace": how-to/mqtt-namespace.md
     - "OPC UA → MQTT bridge": how-to/opcua-mqtt-bridge.md
     - "HiveMQ napojení": how-to/hivemq-napojeni.md
     - "InfluxDB instalace": how-to/influxdb-instalace.md

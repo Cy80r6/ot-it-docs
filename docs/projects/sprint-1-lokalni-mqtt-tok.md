@@ -31,8 +31,10 @@ Zkontroluj běh obou kontejnerů, mapované porty 1883 (MQTT) a 1880 (Node-RED),
 Proč: Eliminuješ falešné chyby v dalších krocích. Vzor kontrol najdeš ve Sprint-0 (sekce „Ověření běhu…“).
 
 ### 2) Návrh topic namespace (minimální konvence)
-Princip: `[org]/[site]/[device]/[sensor]/[metric]`
-Příklad: `home/lab/esp32-01/env/temperature`
+Podrobný návod a doporučené konvence najdeš v [How-to: Návrh MQTT namespace](../how-to/mqtt-namespace.md).
+
+Princip: `v1/<org>/<site>/<device>/<channel>/<metric>`
+Příklad: `v1/home/lab/esp32-01/tele/temperature`
 Doplňky: QoS 0, retain jen pro „poslední známou hodnotu“.
 Proč: Jednou zvolený pattern snižuje budoucí drift v Node-RED flow a v InfluxDB/Power BI.
 

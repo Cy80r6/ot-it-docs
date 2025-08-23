@@ -1,3 +1,9 @@
+# Poznámka k práci s docker-compose.yml a Docker Desktop
+
+- Docker Desktop UI (Play/Stop) pouze spouští/vypíná existující kontejnery, ale nečte automaticky aktuální docker-compose.yml ze složky.
+- Pokud změníš docker-compose.yml, musíš vždy znovu spustit `docker compose up -d` v terminálu, aby se změny projevily.
+- Pro dlouhodobý pořádek drž docker-compose.yml a konfigurační soubory v Gitu, ale ignoruj data, logy a runtime soubory (viz doporučený .gitignore).
+- Detailní postup najdeš v [How-to: Práce s docker-compose a Docker Desktop](../how-to/prace-s-docker-compose.md).
 
 
 # Sprint 0 — Docker stack: Mosquitto + Node-RED
