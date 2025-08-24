@@ -12152,3 +12152,8 @@
 1755955570: Sending PUBLISH to mqtt-explorer-7c83f86d (d0, q0, r0, m0, '$SYS/broker/publish/bytes/sent', ... (5 bytes))
 1755955573: Received DISCONNECT from mqtt-explorer-7c83f86d
 1755955573: Client mqtt-explorer-7c83f86d disconnected.
+1756032964: mosquitto version 2.0.22 starting
+1756032964: Config loaded from /mosquitto/config/mosquitto.conf.
+1756032964: Opening ipv4 listen socket on port 1883.
+1756032964: Opening ipv6 listen socket on port 1883.
+1756032964: mosquitto version 2.0.22 running

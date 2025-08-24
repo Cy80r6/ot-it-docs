@@ -44,8 +44,11 @@ Podrobný popis a příklad nastavení LWT najdeš v [Reference: LWT v MQTT](../
 
 ### 3) Mosquitto – lokální vývojový profil
 Cíl: Lokální broker akceptuje připojení z hostitele i ESP32 v LAN bez TLS, volitelně s heslem.
-Postup a minimální config najdeš v [How-to: Mosquitto – lokální vývojový profil](../how-to/instalace-mosquitto.md). Po nasazení zkontroluj log, aby neběželo „local only mode“.
+Proč ESP32? Viz [ADR 0003: Volba platformy pro edge zařízení — ESP32](../adr/adr-0003-esp32.md).
+Postup a minimální config najdeš v [How-to: Mosquitto – lokální vývojový profil](../how-to/mosquitto-lokalni-profil.md). Po nasazení zkontroluj log, aby neběželo „local only mode“.
 Minimální nastavení: listener na 1883, persistence on, log do souboru, allow_anonymous (jen pro lab). Vzor i typické chybové stavy máš popsány ve Sprint-0.
+Pro základní nastavení a spuštění ESP32 použij:
+- [How-to: ESP32 → MQTT v Pythonu (MicroPython)](../how-to/esp32-micropython-mqtt.md)
 Proč: Stabilní lokální playground; bezpečnost (TLS, ACL, password_file) přidáš ve Sprintu 4.
 
 ### 4) Node-RED – základní flow + dashboard
@@ -56,10 +59,22 @@ Dashboard: jeden „text“ (aktuální hodnota) a jeden „chart“ (posledníc
 Proč: Vidíš živá data bez složitostí.
 
 ### 5) ESP32 – publikace telemetrie
+
 Cíl: Každých 5–10 s poslat metrickou hodnotu na zvolený topic.
 Parametry: SSID/heslo, IP brokera (lokální), clientId, keepalive ~60 s, last-will (volitelné).
-Knihovna: pro start PubSubClient; Async varianta až později.
 Proč: Ověříš realitu (Wi-Fi, MQTT reconnect, latence), ne jen lab s PC.
+
+Vyber jednu z variant: MicroPython / ESPHome / Tasmota / PlatformIO. Přehled a ready-to-run návody najdeš v [ESP32 → MQTT – varianty](../how-to/esp32-mqtt-varianty.md).
+
+---
+
+### 5a) ESP32 – flashni minimální profil
+
+Použij hotový základ z vybrané varianty (viz výše). Uprav Wi-Fi, MQTT a device ID.
+
+LWT: .../meta/status posílá ONLINE (retained) po připojení a broker publikuje OFFLINE (retained) při pádu/odpojení.
+
+Topics: vždy `v1/<org>/<site>/<device>/<channel>/<metric>`, telemetrie každých 5 s, QoS 0, retain pouze pro status.
 
 ### 5a) ESP32 – flashni minimální sketch
 
