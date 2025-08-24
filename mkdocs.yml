@@ -106,14 +106,10 @@ nav:
     - "Šablona ADR": adr/adr-template.md
 
   - Reference:
-    - README: reference/README.md
-    - "Slovníček pojmů": reference/slovnicek.md
-    - "Co je ADR (Architecture Decision Record)": reference/adr-vysvetleni.md
-    - "LWT v MQTT (Last Will & Testament)": reference/lwt.md
-    - Sprinty:
-      - "Sprint 0: Docker stack (Mosquitto + Node-RED)": reference/sprint_0.md
-      - "Sprint 1: Lokální MQTT tok + první dokumentace": reference/sprint_1.md
-      - "Sprint 2: OPC UA simulace + bridge do MQTT": reference/sprint_2.md
-      - "Sprint 3: MQTT do cloudu + historická data": reference/sprint_3.md
-      - "Sprint 4: Základy bezpečnosti OT ↔ IT": reference/sprint_4.md
-      - "Šablona sprintu": reference/templates/sprint_template.md  
+    - "Slovníček pojmů":
+        - "Slovníček pojmů (rozcestník)": reference/glossary.md
+        - "ADR vysvětlivky": reference/adr-explanations.md
+        - "LWT (Last Will and Testament) v MQTT": reference/mqtt-lwt.md
+    - "Šablony":
+        - "Šablona sprintu (použij jen při zakládání nového sprintu)": reference/templates/sprint_template.md
+        - "Šablona how-to (použij jen při zakládání nového návodu)": reference/templates/howto_template.md

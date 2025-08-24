@@ -16,7 +16,7 @@ Node‑RED:
 node-red
 ```
 
-Test payload (MQTT Explorer) → topic lab/esp32/telemetry/temperature
+Test payload (MQTT Explorer) → topic v1/home/lab/esp32-01/tele/temperature
 ```json
 {"ts": 1734300000, "value": 23.7, "unit": "C"}
 ```

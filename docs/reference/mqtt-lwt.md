@@ -1,33 +1,17 @@
-# Last Will & Testament (LWT) v MQTT
+# LWT (Last Will and Testament) v MQTT
 
-LWT je mechanismus, jak automaticky signalizovat, že zařízení (klient) nečekaně vypadlo z provozu.
+LWT je mechanismus MQTT, který umožňuje brokeru automaticky informovat ostatní klienty o nečekaném odpojení zařízení. Typicky se používá pro signalizaci stavu zařízení (ONLINE/OFFLINE).
 
-## Jak to funguje
-- Při připojení klienta (např. ESP32) nastavíš LWT na brokeru.
-- Pokud klient „umře“ (vypadne napájení, Wi-Fi, crash), broker automaticky publikuje zprávu na zvolený topic.
+- Klient při připojení nastaví LWT zprávu (např. OFFLINE) na konkrétní topic.
+- Pokud klient vypadne, broker tuto zprávu publikuje.
 
-## Doporučený postup
-- **Topic:** `v1/home/lab/esp32-01/meta/status`
-- **Payload:** `OFFLINE`
-- **Retain:** `true` (ať to uvidí i noví subscribeři)
-- **QoS:** `1` (doporučeno)
-
-A hned po úspěšném připojení pošli tzv. birth message:
-- `ONLINE` na stejný topic, také retained.
-
-Tím máš trvale k dispozici aktuální „stav života“ zařízení.
+Podrobné návody a příklady najdeš v:
+- [How-to: MQTT namespace](../how-to/mqtt-namespace.md)
+- Projektové příklady (např. ESP32, Node-RED)
 
 ---
 
-## Jak to zapnout (ESP32 + PubSubClient)
-```cpp
-#include <PubSubClient.h>
-
-WiFiClient wifi;
-PubSubClient client(wifi);
-
-const char* mqttHost = "192.168.1.10";
-const int   mqttPort = 1883;
+*Pro detailní implementaci a doporučené postupy viz odkazy výše.*
 
 const char* willTopic   = "v1/home/lab/esp32-01/meta/status";
 const char* willPayload = "OFFLINE";

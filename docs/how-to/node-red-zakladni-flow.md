@@ -9,7 +9,7 @@ Tento návod ukazuje, jak vytvořit základní flow v Node-RED pro příjem dat 
 
 ## Postup
 1. Otevři Node-RED v prohlížeči (obvykle http://localhost:1880).
-2. Přidej node `mqtt in` a nakonfiguruj připojení na broker (např. localhost:1883, téma např. `lab/esp32/telemetry/temperature`).
+2. Přidej node `mqtt in` a nakonfiguruj připojení na broker (např. localhost:1883, téma např. `v1/home/lab/esp32-01/tele/temperature`).
 3. Přidej node `debug` pro zobrazení příchozích zpráv.
 4. Přidej node `ui_chart` (z balíčku node-red-dashboard) pro vizualizaci dat.
 5. Propoj nody: `mqtt in` → `ui_chart` a/nebo `debug`.

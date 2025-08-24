@@ -26,14 +26,14 @@
 
 3. **Test payload (MQTT Explorer nebo WSL2)**
    - Připoj se v MQTT Exploreru na `localhost:1883`.
-   - Subscribe na topic: `lab/esp32/telemetry/temperature`
+   - Subscribe na topic: `v1/home/lab/esp32-01/tele/temperature`
    - Publish na stejný topic, payload:
      ```json
      {"ts": 1734300000, "value": 23.7, "unit": "C"}
      ```
    - Alternativně z WSL2:
      ```bash
-     mosquitto_pub -h localhost -t lab/esp32/telemetry/temperature -m '{"ts": 1734300000, "value": 23.7, "unit": "C"}'
+   mosquitto_pub -h localhost -t v1/home/lab/esp32-01/tele/temperature -m '{"ts": 1734300000, "value": 23.7, "unit": "C"}'
      ```
 
 4. **Dashboard**

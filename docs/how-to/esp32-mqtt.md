@@ -11,7 +11,7 @@
 ```
 v1/<org>/<site>/<device>/<channel>/<metric>
 # Příklad
-ev1/home/lab/esp32-01/tele/temperature
+v1/home/lab/esp32-01/tele/temperature
 ```
 - QoS: 0 (start)
 - retain: jen pro „poslední známý stav“
@@ -109,15 +109,7 @@ void loop(){
 - Špatná IP/hostname brokera → ESP32 nikdy connected().
 - Duplikované CLIENT_ID → broker dropne jedno z připojení.
 - Nestabilní Wi‑Fi → prodluž keepalive v Mosquittu i v klientovi.
-# How-to: ESP32 → MQTT
-
-Návod na odesílání dat ze senzoru ESP32 do MQTT brokeru.
-
-## Předpoklady
-- ESP32 s firmwarem (např. ESPHome, MicroPython)
-- MQTT broker
-
-## Postup
+	# ...konec stránky, duplicitní blok odstraněn...
 1. Nakonfiguruj ESP32 pro připojení k WiFi a MQTT brokeru.
 2. Odesílej data (např. teplotu) do tématu `test/sensor/temperature`.
 

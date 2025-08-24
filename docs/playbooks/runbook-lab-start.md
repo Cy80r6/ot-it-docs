@@ -21,7 +21,7 @@
    - Mosquitto: MQTT Explorer → Connect localhost:1883
    - Node-RED: http://localhost:1880
 3. **ESP32 – připojit napájení**
-   - Očekávej publish každých 5 s do tématu např. `lab/esp32/telemetry/temperature`
+   - Očekávej publish každých 5 s do tématu např. `v1/home/lab/esp32-01/tele/temperature`
 
 ---
 
@@ -46,7 +46,7 @@
 
 ## Odkazy
 - [How‑to: Instalace Dockeru na Windows + WSL2](../projects/sprint-0-docker-stack.md)
-- [How‑to: Instalace Mosquitto](../how-to/instalace-mosquitto.md)
+   # ...existing code...
 - [How‑to: Instalace Node‑RED](../how-to/instalace-node-red.md)
 - [How‑to: Node‑RED: základní flow](../how-to/node-red-zakladni-flow.md)
 - [How‑to: ESP32 → MQTT](../how-to/esp32-mqtt.md)

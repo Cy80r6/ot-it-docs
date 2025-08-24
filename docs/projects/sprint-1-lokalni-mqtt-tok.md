@@ -68,13 +68,19 @@ Vyber jednu z variant: MicroPython / ESPHome / Tasmota / PlatformIO. Přehled a 
 
 ---
 
-### 5a) ESP32 – flashni minimální profil
+### 5a) ESP32 – flashni minimální profil (varianty)
 
-Použij hotový základ z vybrané varianty (viz výše). Uprav Wi-Fi, MQTT a device ID.
+Použij hotový základ z vybrané varianty:
+- [MicroPython](../how-to/esp32-micropython-mqtt.md)
+- [ESPHome](../how-to/esphome-esp32-mqtt.md)
+- [Tasmota](../how-to/tasmota-esp32-mqtt.md)
+- [PlatformIO/Arduino](../how-to/platformio-esp32-mqtt.md)
 
-LWT: .../meta/status posílá ONLINE (retained) po připojení a broker publikuje OFFLINE (retained) při pádu/odpojení.
+Uprav Wi-Fi, MQTT a device ID. LWT: .../meta/status posílá ONLINE (retained) po připojení a broker publikuje OFFLINE (retained) při pádu/odpojení. Topics: vždy `v1/<org>/<site>/<device>/<channel>/<metric>`, telemetrie každých 5 s, QoS 0, retain pouze pro status.
 
-Topics: vždy `v1/<org>/<site>/<device>/<channel>/<metric>`, telemetrie každých 5 s, QoS 0, retain pouze pro status.
+### 5b) ESP32 – mini-sketch (Arduino/PlatformIO)
+
+Pro Arduino/PlatformIO použij [How-to: ESP32 → MQTT (mini-sketch)](../how-to/esp32-mqtt.md) a sjednoť topics podle konvence.
 
 ### 5a) ESP32 – flashni minimální sketch
 
