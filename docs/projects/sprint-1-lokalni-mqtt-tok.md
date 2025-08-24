@@ -44,6 +44,7 @@ Podrobný popis a příklad nastavení LWT najdeš v [Reference: LWT v MQTT](../
 
 ### 3) Mosquitto – lokální vývojový profil
 Cíl: Lokální broker akceptuje připojení z hostitele i ESP32 v LAN bez TLS, volitelně s heslem.
+Postup a minimální config najdeš v [How-to: Mosquitto – lokální vývojový profil](../how-to/instalace-mosquitto.md). Po nasazení zkontroluj log, aby neběželo „local only mode“.
 Minimální nastavení: listener na 1883, persistence on, log do souboru, allow_anonymous (jen pro lab). Vzor i typické chybové stavy máš popsány ve Sprint-0.
 Proč: Stabilní lokální playground; bezpečnost (TLS, ACL, password_file) přidáš ve Sprintu 4.
 
@@ -59,6 +60,22 @@ Cíl: Každých 5–10 s poslat metrickou hodnotu na zvolený topic.
 Parametry: SSID/heslo, IP brokera (lokální), clientId, keepalive ~60 s, last-will (volitelné).
 Knihovna: pro start PubSubClient; Async varianta až později.
 Proč: Ověříš realitu (Wi-Fi, MQTT reconnect, latence), ne jen lab s PC.
+
+### 5a) ESP32 – flashni minimální sketch
+
+Použij hotový základ z [How-to: ESP32 → MQTT (mini-sketch)](../how-to/esp32-mqtt.md).
+
+Uprav WIFI_SSID, WIFI_PASS, MQTT_HOST, CLIENT_ID.
+
+Ujisti se, že topic odpovídá dohodnuté konvenci z kroku 2.
+
+LWT: .../meta/status posílá ONLINE (retained) po připojení a broker publikuje OFFLINE (retained) při pádu/odpojení.
+
+Definition of Done (rozšíření):
+
+.../meta/status má správný stav (ONLINE/OFFLINE, retained).
+
+MQTT Explorer ukazuje telemetrii i status v reálném čase; Node‑RED dashboard reaguje do 2 s.
 
 ### 6) End-to-end ověření
 MQTT Explorer: subscribe na vybraný topic, sleduj payload, Node-RED dashboard zobrazuje živý text i graf, logy Mosquitta kontrolují připojení klienta ESP32.
@@ -76,6 +93,8 @@ Vytvoř 3 minimální stránky (How-to, ADR, Project):
 ## Definition of Done (DoD)
 - MQTT Explorer zobrazuje data z ESP32 v reálném čase na dohodnutém topicu.
 - Node-RED dashboard: 1 text + 1 graf, aktualizace do 2 s od publikace.
+- .../meta/status má správný stav (ONLINE/OFFLINE, retained).
+- MQTT Explorer ukazuje telemetrii i status v reálném čase; Node‑RED dashboard reaguje do 2 s.
 - Repo/web obsahují: 2× How-to, 1× ADR, 1× Project page s odkazy.
 
 ---
