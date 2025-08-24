@@ -2,10 +2,16 @@
 
 Tato stránka slouží jako rozcestník pro vysvětlení klíčových pojmů používaných v dokumentaci. Pro podrobnosti klikni na jednotlivé odkazy:
 
-- [Co je ADR (Architecture Decision Record)](adr-explanations.md) — Jak a proč zaznamenávat architektonická rozhodnutí v projektu, příklad a šablona.
+- [Co je ADR (Architecture Decision Record)](adr-explanations.md) — Jak a proč zaznamenávat architektonická rozhodnutí v projektu, šablona a anti-patterny.
+- [Příklad ADR: LWT presence monitoring](../adr/adr-0004-lwt-presence-monitoring.md) — konkrétní rozhodnutí pro MQTT LWT.
 - [LWT (Last Will and Testament) v MQTT](mqtt-lwt.md) — stručné vysvětlení LWT v MQTT
 
----
+
+## Anti-patterny při psaní ADR
+
+- Příliš dlouhé ADR (ztrácí čitelnost)
+- Bez alternativ (není jasné, co bylo zváženo)
+- Bez kontextu (nevíme „proč právě teď“)
 
 ## Další pojmy
 
