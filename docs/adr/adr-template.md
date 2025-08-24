@@ -1,23 +1,35 @@
 
+---
+Title: ADR Template
+Status: template
+---
 
-# ADR XXXX — [Název rozhodnutí]
---8<-- "includes/abbr.md"
+# ADR Template
+
+*Toto je šablona ADR. Nakopíruj a vyplň při tvorbě nového ADR.*
+
+---8<-- "includes/abbr.md"
 
 !!! info "Status"
-	[Navrženo / Přijato / Zamítnuto] • Datum: <!-- doplň např. 2025‑08‑15 --> • Verze projektu: <!-- např. 0.1 -->
+	[Navrženo / Přijato / Zamítnuto] • Datum: <!-- doplň např. 2025–08–15 --> • Verze projektu: <!-- např. 0.1 -->
+
+## Název
+- [Stručný, výstižný název rozhodnutí.]
+
+## Datum
+- [Datum přijetí rozhodnutí.]
 
 ## Kontext
-- [Popiš, co je potřeba řešit, jaké jsou okolnosti, proč je rozhodnutí důležité.]
+- [Popiš, co je potřeba řešit, jaké jsou okolnosti, proč je rozhodnutí důležité. Piš stručně, ale jasně.]
 
 ## Problém
-- [Formuluj hlavní otázku/problém, který je třeba rozhodnout.]
+- [Formuluj hlavní otázku/problém, který je třeba rozhodnout. Zaměř se na jádro věci.]
 
 ## Rozhodnutí
-- [Jaké řešení bylo zvoleno a proč.]
-- [Stručně popiš implementaci, strukturu, workflow, atd.]
+- [Jaké řešení bylo zvoleno a proč. Stručně popiš implementaci, strukturu, workflow, atd.]
 
 ## Alternativy (zvažované)
-- [Jaké další možnosti byly zvažovány a proč nebyly vybrány.]
+- [Jaké další možnosti byly zvažovány a proč nebyly vybrány. Uveď jen relevantní.]
 
 ## Důsledky
 **Pozitiva**
