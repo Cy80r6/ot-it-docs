@@ -64,6 +64,7 @@ nav:
     - "ESP32 → MQTT (Tasmota)": how-to/tasmota-esp32-mqtt.md
     - "ESP32 → MQTT (PlatformIO/Arduino)": how-to/platformio-esp32-mqtt.md
     - "ESP32 → MQTT – varianty": how-to/esp32-mqtt-varianty.md
+    - "ESP32 → MQTT (mini-sketch)": how-to/esp32-mqtt.md
     - "CI-CD s GitHub Actions": how-to/ci-cd-github-actions.md
     - "CI-CD mike": how-to/ci-cd-mike.md
     - "CI-CD mkdocs": how-to/ci-cd-mkdocs-pages.md
