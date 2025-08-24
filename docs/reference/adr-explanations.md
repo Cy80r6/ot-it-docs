@@ -1,6 +1,12 @@
 # ADR vysvětlivky
 
-ADR (Architecture Decision Record) je stručný záznam o důležitých architektonických rozhodnutích v projektu. Pomáhá zpětně dohledat důvody, kontext, alternativy a důsledky rozhodnutí.
+ADR (Architecture Decision Record) je stručný, ale formální zápis důležitých architektonických rozhodnutí v projektu. Slouží k tomu, aby bylo možné zpětně dohledat:
+- proč bylo rozhodnutí učiněno,
+- jaké byly alternativy,
+- jaké jsou důsledky,
+- v jakém kontextu bylo rozhodnutí přijato.
 
-- Pro detailní šablonu ADR viz [Šablona ADR](../adr/adr-template.md)
-- Podrobný rozbor, příklad a strukturu najdeš zde: [Detailní rozbor ADR (Architecture Decision Record)](adr-explanations.md)
+ADR zvyšuje transparentnost, udržitelnost a přenositelnost projektu. Každé rozhodnutí má svůj vlastní soubor (např. `adr-0001-volba-stacku.md`), kde je popsán kontext, rozhodnutí, alternativy a důsledky.
+
+- Pro šablonu zápisu viz [Šablona ADR](../adr/adr-template.md)
+- Pro konkrétní příklady viz jednotlivé ADR v sekci ADR v navigaci.
