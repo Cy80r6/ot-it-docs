@@ -3,7 +3,7 @@
 Tato stránka slouží jako rozcestník pro vysvětlení klíčových pojmů používaných v dokumentaci. Pro podrobnosti klikni na jednotlivé odkazy:
 
 - [ADR vysvětlivky](adr-explanations.md) — stručné vysvětlení a význam ADR v projektu
-- [Co je ADR (Architecture Decision Record)](adr-vysvetleni.md) — detailní rozbor, příklad a struktura ADR
+- [Detailní rozbor ADR (Architecture Decision Record)](adr-explanations.md) — příklad a struktura ADR
 - [LWT (Last Will and Testament) v MQTT](mqtt-lwt.md) — stručné vysvětlení LWT v MQTT
 
 ---

@@ -40,7 +40,7 @@ Proč: Jednou zvolený pattern snižuje budoucí drift v Node-RED flow a v Influ
 
 ### 2a) Last Will & Testament (LWT) v MQTT
 
-Podrobný popis a příklad nastavení LWT najdeš v [Reference: LWT v MQTT](../reference/lwt.md).
+Podrobný popis a příklad nastavení LWT najdeš v [Reference: LWT v MQTT](../reference/mqtt-lwt.md).
 
 ### 3) Mosquitto – lokální vývojový profil
 Cíl: Lokální broker akceptuje připojení z hostitele i ESP32 v LAN bez TLS, volitelně s heslem.
